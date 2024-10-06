@@ -2,6 +2,7 @@ package einstein.white_pumpkins.block;
 
 import com.mojang.serialization.MapCodec;
 import einstein.white_pumpkins.ModInit;
+import einstein.white_pumpkins.platform.Services;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Plane;
@@ -61,7 +62,7 @@ public class WhitePumpkinStemBlock extends BushBlock implements BonemealableBloc
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (level.getRawBrightness(pos, 0) >= 9) {
-            float growthSpeed = CropBlock.getGrowthSpeed(state.getBlock(), level, pos);
+            float growthSpeed = Services.HOOKS.getCropGrowthSpeed(state, pos, level);
 
             if (random.nextInt((int) (25 / growthSpeed) + 1) == 0) {
                 int age = state.getValue(AGE);
