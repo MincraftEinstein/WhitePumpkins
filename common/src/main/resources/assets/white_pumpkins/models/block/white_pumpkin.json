@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/pumpkin",
+  "textures": {
+    "end": "white_pumpkins:block/white_pumpkin_top",
+    "side": "white_pumpkins:block/white_pumpkin_side"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "white_pumpkins:block/carved_white_pumpkin",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "white_pumpkins:block/carved_white_pumpkin"
+    },
+    "facing=south": {
+      "model": "white_pumpkins:block/carved_white_pumpkin",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "white_pumpkins:block/carved_white_pumpkin",
+      "y": 270
+    }
+  }
+}

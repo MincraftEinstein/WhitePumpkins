@@ -1,0 +1,6 @@
+{
+  "parent": "white_pumpkins:block/carved_white_pumpkin",
+  "textures": {
+    "front": "white_pumpkins:block/carved_white_pumpkin_worn"
+  }
+}
