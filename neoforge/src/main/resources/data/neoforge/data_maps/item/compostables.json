@@ -1,0 +1,16 @@
+{
+  "values": {
+    "white_pumpkins:white_pumpkin":  {
+      "chance": 0.65
+    },
+    "white_pumpkins:carved_white_pumpkin":  {
+      "chance": 0.65
+    },
+    "white_pumpkins:white_pumpkin_seeds":  {
+      "chance": 0.3
+    },
+    "white_pumpkins:white_pumpkin_pie":  {
+      "chance": 1
+    }
+  }
+}
