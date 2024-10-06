@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "#",
+    "$"
+  ],
+  "key": {
+    "#": {
+      "item": "white_pumpkins:carved_white_pumpkin"
+    },
+    "$": {
+      "item": "minecraft:torch"
+    }
+  },
+  "result": {
+    "id": "white_pumpkins:white_jack_o_lantern"
+  }
+}

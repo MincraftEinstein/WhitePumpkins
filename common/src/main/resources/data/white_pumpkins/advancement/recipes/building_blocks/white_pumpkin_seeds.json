@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_carved_white_pumpkin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "white_pumpkins:carved_white_pumpkin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "white_pumpkins:white_jack_o_lantern"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_carved_white_pumpkin"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "white_pumpkins:white_jack_o_lantern"
+    ]
+  }
+}
