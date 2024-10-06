@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_white_carved_pumpkin": {
+    "has_carved_white_pumpkin": {
       "conditions": {
         "items": [
           {
