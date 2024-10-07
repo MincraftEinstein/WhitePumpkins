@@ -7,6 +7,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -14,6 +15,7 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.common.BasicItemListing;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
 import net.neoforged.neoforge.event.village.WandererTradesEvent;
 
 @Mod(WhitePumpkins.MOD_ID)
@@ -43,6 +45,13 @@ public class WhitePumpkinsNeoForge {
         });
         NeoForge.EVENT_BUS.addListener((WandererTradesEvent event) -> {
             event.getGenericTrades().add(new BasicItemListing(2, new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get()), 12, 1));
+        });
+        NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST, (EnderManAngerEvent event) -> {
+            ItemStack stack = event.getPlayer().getInventory().armor.get(3);
+
+            if (stack.is(ModInit.CARVED_WHITE_PUMPKIN.get().asItem())) {
+                event.setCanceled(true);
+            }
         });
     }
 }
