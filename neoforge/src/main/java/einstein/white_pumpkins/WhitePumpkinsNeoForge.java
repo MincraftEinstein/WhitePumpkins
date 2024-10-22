@@ -26,11 +26,6 @@ public class WhitePumpkinsNeoForge {
         NeoForgeRegistryHelper.BLOCKS.register(modEventBus);
         NeoForgeRegistryHelper.ITEMS.register(modEventBus);
         modEventBus.addListener((FMLClientSetupEvent event) -> WhitePumpkins.clientSetup());
-        modEventBus.addListener((RegisterColorHandlersEvent.Block event) ->
-                event.register((state, tintGetter, pos, tintIndex) ->
-                        WhitePumpkins.registerBlockColors(state, pos, tintGetter, tintIndex)
-                )
-        );
         modEventBus.addListener((BuildCreativeModeTabContentsEvent event) -> {
             ResourceKey<CreativeModeTab> tabKey = event.getTabKey();
             if (tabKey.equals(CreativeModeTabs.NATURAL_BLOCKS)) {

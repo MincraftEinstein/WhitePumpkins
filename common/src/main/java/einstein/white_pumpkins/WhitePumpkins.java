@@ -37,17 +37,6 @@ public class WhitePumpkins {
         );
     }
 
-    public static int registerBlockColors(BlockState state, BlockPos pos, BlockAndTintGetter tintGetter, int tintIndex) {
-        if (state.is(ModInit.WHITE_PUMPKIN_STEM.get())) {
-            int age = state.getValue(StemBlock.AGE);
-            return FastColor.ARGB32.color(age * 32, age * 32, age * 32);
-        }
-        else if (state.is(ModInit.ATTACHED_WHITE_PUMPKIN_STEM.get())) {
-            return -2046180;
-        }
-        return 0;
-    }
-
     public static ResourceLocation loc(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }

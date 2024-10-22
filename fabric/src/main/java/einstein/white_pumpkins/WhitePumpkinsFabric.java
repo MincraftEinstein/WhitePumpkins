@@ -43,8 +43,5 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
         WhitePumpkins.clientSetup();
         BlockRenderLayerMap.INSTANCE.putBlock(ModInit.WHITE_PUMPKIN_STEM.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModInit.ATTACHED_WHITE_PUMPKIN_STEM.get(), RenderType.cutout());
-        ColorProviderRegistry.BLOCK.register((state, tintGetter, pos, tintIndex) ->
-                WhitePumpkins.registerBlockColors(state, pos, tintGetter, tintIndex)
-        );
     }
 }
