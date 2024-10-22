@@ -5,5 +5,7 @@
   "block.white_pumpkins.white_pumpkin_stem": "White Pumpkin Stem",
   "block.white_pumpkins.attached_white_pumpkin_stem": "Attached White Pumpkin Stem",
   "item.white_pumpkins.white_pumpkin_seeds": "White Pumpkin Seeds",
-  "item.white_pumpkins.white_pumpkin_pie": "White Pumpkin Pie"
+  "item.white_pumpkins.white_pumpkin_pie": "White Pumpkin Pie",
+  "item.white_pumpkins.white_pumpkin_snow_golem_spawn_egg": "White Pumpkin Snow Golem Spawn Egg",
+  "entity.white_pumpkins.white_pumpkin_snow_golem": "White Pumpkin Snow Golem"
 }
