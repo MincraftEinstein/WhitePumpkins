@@ -7,5 +7,7 @@
   "item.white_pumpkins.white_pumpkin_seeds": "White Pumpkin Seeds",
   "item.white_pumpkins.white_pumpkin_pie": "White Pumpkin Pie",
   "item.white_pumpkins.white_pumpkin_snow_golem_spawn_egg": "White Pumpkin Snow Golem Spawn Egg",
-  "entity.white_pumpkins.white_pumpkin_snow_golem": "White Pumpkin Snow Golem"
+  "entity.white_pumpkins.white_pumpkin_snow_golem": "White Pumpkin Snow Golem",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.title": "A Portal to Mystery",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.description": "Wear a carved white pumpkin on your head"
 }

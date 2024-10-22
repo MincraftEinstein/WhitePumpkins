@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "id": "white_pumpkins:carved_white_pumpkin"
+    },
+    "title": {
+      "translate": "advancement.white_pumpkins.wear_carved_white_pumpkin.title"
+    },
+    "description": {
+      "translate": "advancement.white_pumpkins.wear_carved_white_pumpkin.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "equipment": {
+                "head": {
+                  "items": "white_pumpkins:carved_white_pumpkin"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "sends_telemetry_event": false
+}
