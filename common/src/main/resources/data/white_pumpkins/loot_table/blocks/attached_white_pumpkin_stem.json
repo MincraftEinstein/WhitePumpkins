@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:binomial",
+                "n": 3,
+                "p": 0.53333336
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "white_pumpkins:white_pumpkin_seeds"
+        }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:explosion_decay"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "white_pumpkins:blocks/attached_white_pumpkin_stem"
+}

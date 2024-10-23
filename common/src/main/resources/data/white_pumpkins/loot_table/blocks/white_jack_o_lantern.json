@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "white_pumpkins:white_jack_o_lantern"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "white_pumpkins:blocks/white_jack_o_lantern"
+}
