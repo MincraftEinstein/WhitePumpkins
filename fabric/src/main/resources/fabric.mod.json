@@ -37,8 +37,8 @@
   "custom": {
     "modmenu": {
       "links": {
-        "modmenu.modrinth": "https://modrinth.com/mod/subtle-effects",
-        "modmenu.curseforge": "https://curseforge.com/minecraft/mc-mods/subtle-effects",
+        "modmenu.modrinth": "https://modrinth.com/mod/white-pumpkins",
+        "modmenu.curseforge": "https://curseforge.com/minecraft/mc-mods/white-pumpkins",
         "modmenu.discord": "https://discord.gg/gSsaFAvrBM",
         "modmenu.kofi": "https://ko-fi.com/mincrafteinstein"
       }
