@@ -9,8 +9,6 @@
     "GuiMixin",
     "SnowGolemHeadLayerMixin"
   ],
-  "mixins": [],
-  "server": [],
   "injectors": {
     "defaultRequire": 1
   }

@@ -4,11 +4,9 @@
   "package": "einstein.white_pumpkins.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_17",
-  "client": [],
   "mixins": [
     "EndermanMixin"
   ],
-  "server": [],
   "injectors": {
     "defaultRequire": 1
   }

@@ -20,9 +20,6 @@ issueTrackerURL = "https://github.com/MincraftEinstein/WhitePumpkins/issues"
 [[mixins]]
     config = "${mod_id}.mixins.json"
 
-[[mixins]]
-    config = "${mod_id}.neoforge.mixins.json"
-
 [[dependencies.white_pumpkins]]
     modId = "neoforge"
     type = "required"
