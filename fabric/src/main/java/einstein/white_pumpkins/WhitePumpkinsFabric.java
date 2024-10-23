@@ -6,6 +6,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -16,6 +17,9 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 
 public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer {
 
@@ -44,6 +48,25 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
         });
         EntityRendererRegistry.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), SnowGolemRenderer::new);
         FabricDefaultAttributeRegistry.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), WhitePumpkinSnowGolem.createAttributes());
+        LootTableEvents.MODIFY.register((key, builder, source, registries) -> {
+            if (source.isBuiltin()) {
+                if (key.equals(BuiltInLootTables.SIMPLE_DUNGEON)) {
+                    builder.withPool(new LootPool.Builder()
+                            .add(NestedLootTable.lootTableReference(WhitePumpkins.DUNGEON_MANSION_INJECTED_LOOT_TABLE))
+                    );
+                }
+                else if (key.equals(BuiltInLootTables.ABANDONED_MINESHAFT)) {
+                    builder.withPool(new LootPool.Builder()
+                            .add(NestedLootTable.lootTableReference(WhitePumpkins.MINESHAFT_INJECTED_LOOT_TABLE))
+                    );
+                }
+                else if (key.equals(BuiltInLootTables.WOODLAND_MANSION)) {
+                    builder.withPool(new LootPool.Builder()
+                            .add(NestedLootTable.lootTableReference(WhitePumpkins.DUNGEON_MANSION_INJECTED_LOOT_TABLE))
+                    );
+                }
+            }
+        });
     }
 
     @Override
