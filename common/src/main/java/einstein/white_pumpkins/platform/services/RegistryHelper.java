@@ -13,5 +13,5 @@ public interface RegistryHelper {
 
     <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item);
 
-    <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, Supplier<EntityType<T>> entity);
+    <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, Supplier<EntityType.Builder<T>> entity);
 }

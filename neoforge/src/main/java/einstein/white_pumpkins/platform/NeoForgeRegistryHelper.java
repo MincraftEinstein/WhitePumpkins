@@ -3,6 +3,7 @@ package einstein.white_pumpkins.platform;
 import einstein.white_pumpkins.WhitePumpkins;
 import einstein.white_pumpkins.platform.services.RegistryHelper;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -28,7 +29,7 @@ public class NeoForgeRegistryHelper implements RegistryHelper {
     }
 
     @Override
-    public <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, Supplier<EntityType<T>> entity) {
-        return ENTITY_TYPES.register(name, entity);
+    public <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, Supplier<EntityType.Builder<T>> entity) {
+        return ENTITY_TYPES.register(name, () -> entity.get().build(ResourceKey.create(Registries.ENTITY_TYPE, WhitePumpkins.loc(name))));
     }
 }

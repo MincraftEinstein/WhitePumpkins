@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "white_pumpkins:white_pumpkin"
-    },
-    {
-      "item": "minecraft:sugar"
-    },
-    {
-      "item": "minecraft:egg"
-    }
+    "white_pumpkins:white_pumpkin",
+    "minecraft:sugar",
+    "minecraft:egg"
   ],
   "result": {
     "id": "white_pumpkins:white_pumpkin_pie"

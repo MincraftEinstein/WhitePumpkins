@@ -4,6 +4,9 @@ import einstein.white_pumpkins.WhitePumpkins;
 import einstein.white_pumpkins.platform.services.RegistryHelper;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -26,8 +29,9 @@ public class FabricRegistryHelper implements RegistryHelper {
     }
 
     @Override
-    public <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, Supplier<EntityType<T>> entity) {
-        EntityType<T> instance = Registry.register(BuiltInRegistries.ENTITY_TYPE, WhitePumpkins.loc(name), entity.get());
+    public <T extends Entity> Supplier<EntityType<T>> registerEntity(String name, Supplier<EntityType.Builder<T>> entity) {
+        ResourceLocation id = WhitePumpkins.loc(name);
+        EntityType<T> instance = Registry.register(BuiltInRegistries.ENTITY_TYPE, id, entity.get().build(ResourceKey.create(Registries.ENTITY_TYPE, id)));
         return () -> instance;
     }
 }

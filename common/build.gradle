@@ -6,7 +6,7 @@ plugins {
 neoForge {
     neoFormVersion = neo_form_version
 
-    accessTransformers.add(file('src/main/resources/META-INF/accesstransformer.cfg').absolutePath)
+    accessTransformers.from(file('src/main/resources/META-INF/accesstransformer.cfg'))
 
     parchment {
         minecraftVersion = parchment_minecraft

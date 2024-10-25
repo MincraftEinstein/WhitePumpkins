@@ -6,12 +6,8 @@
     "$"
   ],
   "key": {
-    "#": {
-      "item": "white_pumpkins:carved_white_pumpkin"
-    },
-    "$": {
-      "item": "minecraft:torch"
-    }
+    "#": "white_pumpkins:carved_white_pumpkin",
+    "$": "minecraft:torch"
   },
   "result": {
     "id": "white_pumpkins:white_jack_o_lantern"

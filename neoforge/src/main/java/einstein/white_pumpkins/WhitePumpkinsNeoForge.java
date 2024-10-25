@@ -52,12 +52,12 @@ public class WhitePumpkinsNeoForge {
         NeoForge.EVENT_BUS.addListener((WandererTradesEvent event) -> {
             event.getGenericTrades().add(new BasicItemListing(2, new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get()), 12, 1));
         });
-        NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST, (EnderManAngerEvent event) -> {
-            ItemStack stack = event.getPlayer().getInventory().armor.get(3);
-
-            if (stack.is(ModInit.CARVED_WHITE_PUMPKIN.get().asItem())) {
-                event.setCanceled(true);
-            }
-        });
+//        NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST, (EnderManAngerEvent event) -> {
+//            ItemStack stack = event.getPlayer().getInventory().armor.get(3);
+//
+//            if (stack.is(ModInit.CARVED_WHITE_PUMPKIN.get().asItem())) {
+//                event.setCanceled(true);
+//            }
+//        });
     }
 }
