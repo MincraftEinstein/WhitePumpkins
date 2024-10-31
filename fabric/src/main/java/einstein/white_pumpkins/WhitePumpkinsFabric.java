@@ -46,7 +46,6 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
         TradeOfferHelper.registerWanderingTraderOffers(1, listings -> {
             listings.add(new VillagerTrades.ItemsForEmeralds(ModInit.WHITE_PUMPKIN_SEEDS.get(), 2, 1, 1));
         });
-        EntityRendererRegistry.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), SnowGolemRenderer::new);
         FabricDefaultAttributeRegistry.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), WhitePumpkinSnowGolem.createAttributes());
         LootTableEvents.MODIFY.register((key, builder, source, registries) -> {
             if (source.isBuiltin()) {
@@ -74,5 +73,6 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
         WhitePumpkins.clientSetup();
         BlockRenderLayerMap.INSTANCE.putBlock(ModInit.WHITE_PUMPKIN_STEM.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModInit.ATTACHED_WHITE_PUMPKIN_STEM.get(), RenderType.cutout());
+        EntityRendererRegistry.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), SnowGolemRenderer::new);
     }
 }
