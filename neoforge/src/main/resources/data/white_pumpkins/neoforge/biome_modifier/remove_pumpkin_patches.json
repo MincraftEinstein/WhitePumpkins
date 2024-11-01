@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:remove_features",
+  "biomes": "#white_pumpkins:has_white_pumpkin_patches",
+  "features": "minecraft:patch_pumpkin",
+  "step": "vegetal_decoration"
+}

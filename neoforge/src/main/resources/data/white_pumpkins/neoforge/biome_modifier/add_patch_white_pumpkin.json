@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#white_pumpkins:has_white_pumpkin_patches",
+  "features": "white_pumpkins:patch_white_pumpkin",
+  "step": "vegetal_decoration"
+}

@@ -4,7 +4,10 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +19,8 @@ public class WhitePumpkins {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
     public static final ResourceKey<LootTable> MINESHAFT_INJECTED_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, loc("injected/abandoned_mineshaft"));
     public static final ResourceKey<LootTable> DUNGEON_MANSION_INJECTED_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, loc("injected/simple_dungeon_woodland_mansion"));
+    public static final ResourceKey<PlacedFeature> PATCH_WHITE_PUMPKIN_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, loc("patch_white_pumpkin"));
+    public static final TagKey<Biome> HAS_WHITE_PUMPKIN_PATCHES_TAG = TagKey.create(Registries.BIOME, loc("has_white_pumpkin_patches"));
 
     public static void init() {
         ModInit.init();

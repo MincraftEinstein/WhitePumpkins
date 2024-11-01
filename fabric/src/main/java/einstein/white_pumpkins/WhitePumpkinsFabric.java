@@ -3,6 +3,8 @@ package einstein.white_pumpkins;
 import einstein.white_pumpkins.entity.WhitePumpkinSnowGolem;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -12,14 +14,22 @@ import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.SnowGolemRenderer;
+import net.minecraft.data.worldgen.WinterDropBiomes;
+import net.minecraft.data.worldgen.features.VegetationFeatures;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
+
+import static einstein.white_pumpkins.WhitePumpkins.HAS_WHITE_PUMPKIN_PATCHES_TAG;
+import static einstein.white_pumpkins.WhitePumpkins.loc;
 
 public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer {
 
@@ -66,6 +76,10 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
                 }
             }
         });
+
+        BiomeModifications.addFeature(context -> context.hasTag(HAS_WHITE_PUMPKIN_PATCHES_TAG), GenerationStep.Decoration.VEGETAL_DECORATION, WhitePumpkins.PATCH_WHITE_PUMPKIN_FEATURE);
+        BiomeModifications.create(loc("remove_pumpkin_patches")).add(ModificationPhase.REMOVALS, context -> context.hasTag(HAS_WHITE_PUMPKIN_PATCHES_TAG), (context, modificationContext) ->
+                modificationContext.getGenerationSettings().removeFeature(VegetationPlacements.PATCH_PUMPKIN));
     }
 
     @Override
