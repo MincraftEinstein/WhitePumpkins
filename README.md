@@ -7,7 +7,8 @@
 [![Discord Invite](https://img.shields.io/badge/Discord-Einstein%27s%20Lab-blue?style=for-the-badge&logo=discord)](https://discord.gg/gSsaFAvrBM)
 
 ### **📘 Description**
-A little mod adding Minecraft Story Mode inspired white pumpkins that will eventually generate in the pale garden. Made for SpookyJam 2024
+A little mod adding Minecraft Story Mode inspired white pumpkins that generate in the pale garden.
+Made for SpookyJam 2024
 
 <br>
 <details>
