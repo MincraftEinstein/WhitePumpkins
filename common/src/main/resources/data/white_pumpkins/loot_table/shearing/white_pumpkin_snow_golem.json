@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:shearing",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "white_pumpkins:carved_white_pumpkin"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "white_pumpkins:shearing/white_pumpkin_snow_golem"
+}
