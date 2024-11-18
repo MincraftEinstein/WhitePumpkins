@@ -1,0 +1,13 @@
+{
+  "block.white_pumpkins.white_pumpkin": "白色南瓜",
+  "block.white_pumpkins.carved_white_pumpkin": "雕刻白色南瓜",
+  "block.white_pumpkins.white_jack_o_lantern": "白色南瓜灯",
+  "block.white_pumpkins.white_pumpkin_stem": "白色南瓜茎",
+  "block.white_pumpkins.attached_white_pumpkin_stem": "结果的白色南瓜茎",
+  "item.white_pumpkins.white_pumpkin_seeds": "白色南瓜种子",
+  "item.white_pumpkins.white_pumpkin_pie": "白色南瓜派",
+  "item.white_pumpkins.white_pumpkin_snow_golem_spawn_egg": "白色南瓜雪傀儡刷怪蛋",
+  "entity.white_pumpkins.white_pumpkin_snow_golem": "白色南瓜雪傀儡",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.title": "通往神秘国度的传送门",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.description": "戴上一个雕刻白色南瓜"
+}
