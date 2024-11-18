@@ -7,6 +7,7 @@
 [![Discord Invite](https://img.shields.io/badge/Discord-Einstein%27s%20Lab-blue?style=for-the-badge&logo=discord)](https://discord.gg/gSsaFAvrBM)
 
 ### **📘 Description**
+
 A little mod adding Minecraft Story Mode inspired white pumpkins that generate in the pale garden.
 Made for SpookyJam 2024
 
@@ -29,9 +30,21 @@ You may not
 * Project pages include CurseForge, Modrinth, Planet Minecraft, GitHub
 ** Assets include logos, banners, textures, models etc
 ```
+
 </details>
 
 [<img alt="Ko-fi Badge" height="15%" width="15%" src="https://storage.ko-fi.com/cdn/brandasset/kofi_bg_tag_dark.png" alt="Ko-fi badge">](https://ko-fi.com/mincrafteinstein)
+
+---
+
+### **💬 Translations**
+
+Feel free to translate this mod into any language or update existing translations.
+To get your translation into the mod, make a pull request on GitHub with the translated language file.
+
+All translators are credited in the list below.
+
+- Simplified Chinese: [junshengxie](https://curseforge.com/members/junshengxie)
 
 ---
 
