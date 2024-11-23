@@ -45,6 +45,7 @@ To get your translation into the mod, make a pull request on GitHub with the tra
 All translators are credited in the list below.
 
 - Simplified Chinese: [junshengxie](https://curseforge.com/members/junshengxie)
+- Japanese: [gohkenytp](https://github.com/gohkenytp)
 
 ---
 
