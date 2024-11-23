@@ -1,0 +1,13 @@
+{
+  "block.white_pumpkins.white_pumpkin": "ホワイトパンプキン",
+  "block.white_pumpkins.carved_white_pumpkin": "彫刻された白いカボチャ",
+  "block.white_pumpkins.white_jack_o_lantern": "白いジャック・オー・ランタン",
+  "block.white_pumpkins.white_pumpkin_stem": "白いカボチャの茎",
+  "block.white_pumpkins.attached_white_pumpkin_stem": "白いカボチャの茎が付属",
+  "item.white_pumpkins.white_pumpkin_seeds": "白いカボチャの種",
+  "item.white_pumpkins.white_pumpkin_pie": "ホワイトパンプキンパイ",
+  "item.white_pumpkins.white_pumpkin_snow_golem_spawn_egg": "ホワイトパンプキンスノーゴーレムスポーンエッグ",
+  "entity.white_pumpkins.white_pumpkin_snow_golem": "ホワイトパンプキンスノーゴーレム",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.title": "謎への入り口",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.description": "頭に白いカボチャをかぶる"
+}
