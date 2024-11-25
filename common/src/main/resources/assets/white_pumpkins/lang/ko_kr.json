@@ -1,0 +1,13 @@
+{
+  "block.white_pumpkins.white_pumpkin": "화이트 호박",
+  "block.white_pumpkins.carved_white_pumpkin": "조각 된 흰색 호박",
+  "block.white_pumpkins.white_jack_o_lantern": "화이트 잭 오 랜턴",
+  "block.white_pumpkins.white_pumpkin_stem": "흰 호박 줄기",
+  "block.white_pumpkins.attached_white_pumpkin_stem": "흰 호박 줄기가 부속",
+  "item.white_pumpkins.white_pumpkin_seeds": "흰 호박 씨앗",
+  "item.white_pumpkins.white_pumpkin_pie": "화이트 호박 파이",
+  "item.white_pumpkins.white_pumpkin_snow_golem_spawn_egg": "화이트 호박 스노우 골렘 스폰 달걀",
+  "entity.white_pumpkins.white_pumpkin_snow_golem": "화이트 호박 스노우 골렘",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.title": "수수께끼 입구",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.description": "머리에 하얀 호박을 쓰다"
+}
