@@ -46,6 +46,7 @@ All translators are credited in the list below.
 
 - Simplified Chinese: [junshengxie](https://curseforge.com/members/junshengxie)
 - Japanese: [gohkenytp](https://github.com/gohkenytp)
+- Korean: [gohkenytp](https://github.com/gohkenytp)
 
 ---
 
