@@ -1,12 +1,17 @@
 package einstein.white_pumpkins;
 
+import einstein.white_pumpkins.block.WhitePumpkinStemBlock;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.slf4j.Logger;
@@ -37,6 +42,13 @@ public class WhitePumpkins {
                     return 0;
                 }
         );
+    }
+
+    public static int getWhitePumpkinSteamColor(BlockState state, BlockAndTintGetter tintGetter, BlockPos pos, int tintIndex) {
+        int age = state.getValue(WhitePumpkinStemBlock.AGE);
+        int i = age + 1;
+        int i1 = (int) (((255F - 32F) / WhitePumpkinStemBlock.MAX_AGE) * age);
+        return ARGB.color(32 + i1, 247 + i, 4 * i + i1);
     }
 
     public static ResourceLocation loc(String path) {

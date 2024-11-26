@@ -13,6 +13,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.common.BasicItemListing;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -47,6 +48,8 @@ public class WhitePumpkinsNeoForge {
                 event.registerEntityRenderer(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), SnowGolemRenderer::new));
         modEventBus.addListener((EntityAttributeCreationEvent event) ->
                 event.put(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), WhitePumpkinSnowGolem.createAttributes().build()));
+        modEventBus.addListener((RegisterColorHandlersEvent.Block event) ->
+                event.register(WhitePumpkins::getWhitePumpkinSteamColor, ModInit.WHITE_PUMPKIN_STEM.get()));
         NeoForge.EVENT_BUS.addListener((WandererTradesEvent event) -> {
             event.getGenericTrades().add(new BasicItemListing(2, new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get()), 12, 1));
         });
