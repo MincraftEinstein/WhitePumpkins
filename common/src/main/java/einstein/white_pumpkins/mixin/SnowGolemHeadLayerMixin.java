@@ -4,21 +4,22 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import einstein.white_pumpkins.ModInit;
-import net.minecraft.client.renderer.entity.SnowGolemRenderer;
-import net.minecraft.world.entity.animal.SnowGolem;
-import net.minecraft.world.item.Item;
+import einstein.white_pumpkins.SnowGolemRenderStateAccessor;
+import net.minecraft.client.renderer.entity.layers.SnowGolemHeadLayer;
+import net.minecraft.client.renderer.entity.state.SnowGolemRenderState;
+import net.minecraft.world.level.block.Block;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(SnowGolemRenderer.class)
+@Mixin(SnowGolemHeadLayer.class)
 public class SnowGolemHeadLayerMixin {
 
-    @WrapOperation(method = "extractRenderState(Lnet/minecraft/world/entity/animal/SnowGolem;Lnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;F)V",
-            at = @At(value = "FIELD", target = "Lnet/minecraft/world/item/Items;CARVED_PUMPKIN:Lnet/minecraft/world/item/Item;")
+    @WrapOperation(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/renderer/entity/state/SnowGolemRenderState;FF)V",
+            at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;CARVED_PUMPKIN:Lnet/minecraft/world/level/block/Block;")
     )
-    private Item render(Operation<Item> original, @Local(argsOnly = true) SnowGolem golem) {
-        if (golem.getType().equals(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get())) {
-            return ModInit.CARVED_WHITE_PUMPKIN.get().asItem();
+    private Block replacePumpkin(Operation<Block> original, @Local(argsOnly = true) SnowGolemRenderState renderState) {
+        if (((SnowGolemRenderStateAccessor) renderState).whitePumpkins$hasWhitePumpkin()) {
+            return ModInit.CARVED_WHITE_PUMPKIN.get();
         }
         return original.call();
     }

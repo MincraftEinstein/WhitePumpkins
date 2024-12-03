@@ -50,7 +50,7 @@ public class ModInit {
             .eyeHeight(1.7F)
             .clientTrackingRange(8)
     );
-    public static final Supplier<Item> WHITE_PUMPKIN_SNOW_GOLEM_SPAWN_EGG = registerItem("white_pumpkin_snow_golem_spawn_egg", properties -> new SpawnEggItem(WHITE_PUMPKIN_SNOW_GOLEM.get(), 0xD9F2F2, 0x81A4A4, properties), new Item.Properties());
+    public static final Supplier<Item> WHITE_PUMPKIN_SNOW_GOLEM_SPAWN_EGG = registerItem("white_pumpkin_snow_golem_spawn_egg", properties -> new SpawnEggItem(WHITE_PUMPKIN_SNOW_GOLEM.get(), properties), new Item.Properties());
 
     public static void init() {
     }

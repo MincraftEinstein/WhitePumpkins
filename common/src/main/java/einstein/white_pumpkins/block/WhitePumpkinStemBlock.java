@@ -85,7 +85,7 @@ public class WhitePumpkinStemBlock extends BushBlock implements BonemealableBloc
     }
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader reader, BlockPos pos, BlockState state) {
+    protected ItemStack getCloneItemStack(LevelReader reader, BlockPos pos, BlockState state, boolean b) {
         return new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get());
     }
 
@@ -111,7 +111,7 @@ public class WhitePumpkinStemBlock extends BushBlock implements BonemealableBloc
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(AGE);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(AGE);
     }
 }

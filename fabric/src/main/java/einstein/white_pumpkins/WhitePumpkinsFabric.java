@@ -82,7 +82,6 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
 
     @Override
     public void onInitializeClient() {
-        WhitePumpkins.clientSetup();
         BlockRenderLayerMap.INSTANCE.putBlock(ModInit.WHITE_PUMPKIN_STEM.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModInit.ATTACHED_WHITE_PUMPKIN_STEM.get(), RenderType.cutout());
         EntityRendererRegistry.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), SnowGolemRenderer::new);

@@ -62,7 +62,7 @@ public class AttachedWhitePumpkinStemBlock extends BushBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader reader, BlockPos pos, BlockState state) {
+    protected ItemStack getCloneItemStack(LevelReader reader, BlockPos pos, BlockState state, boolean b) {
         return new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get());
     }
 

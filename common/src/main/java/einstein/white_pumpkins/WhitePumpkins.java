@@ -1,14 +1,12 @@
 package einstein.white_pumpkins;
 
 import einstein.white_pumpkins.block.WhitePumpkinStemBlock;
-import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ARGB;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,19 +27,6 @@ public class WhitePumpkins {
 
     public static void init() {
         ModInit.init();
-    }
-
-    public static void clientSetup() {
-        ItemProperties.register(ModInit.CARVED_WHITE_PUMPKIN.get().asItem(), WhitePumpkins.loc("on_head"),
-                (stack, level, entity, seed) -> {
-                    if (entity != null) {
-                        if (stack.equals(entity.getItemBySlot(EquipmentSlot.HEAD))) {
-                            return 1;
-                        }
-                    }
-                    return 0;
-                }
-        );
     }
 
     public static int getWhitePumpkinSteamColor(BlockState state, BlockAndTintGetter tintGetter, BlockPos pos, int tintIndex) {

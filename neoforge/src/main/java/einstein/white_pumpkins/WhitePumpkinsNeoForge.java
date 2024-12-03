@@ -11,7 +11,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.common.BasicItemListing;
@@ -28,7 +27,6 @@ public class WhitePumpkinsNeoForge {
         NeoForgeRegistryHelper.BLOCKS.register(modEventBus);
         NeoForgeRegistryHelper.ITEMS.register(modEventBus);
         NeoForgeRegistryHelper.ENTITY_TYPES.register(modEventBus);
-        modEventBus.addListener((FMLClientSetupEvent event) -> WhitePumpkins.clientSetup());
         modEventBus.addListener((BuildCreativeModeTabContentsEvent event) -> {
             ResourceKey<CreativeModeTab> tabKey = event.getTabKey();
             if (tabKey.equals(CreativeModeTabs.NATURAL_BLOCKS)) {
