@@ -90,7 +90,7 @@ public class CarvedWhitePumpkinBlock extends HorizontalDirectionalBlock {
 
     private static void spawnGolemInWorld(Level level, BlockPattern.BlockPatternMatch patternMatch, Entity golem, BlockPos pos) {
         CarvedPumpkinBlock.clearPatternBlocks(level, patternMatch);
-        golem.moveTo(pos.getX() + 0.5, pos.getY() + 0.05, pos.getZ() + 0.5, 0, 0);
+        golem.snapTo(pos.getX() + 0.5, pos.getY() + 0.05, pos.getZ() + 0.5, 0, 0);
         level.addFreshEntity(golem);
 
         for (ServerPlayer serverplayer : level.getEntitiesOfClass(ServerPlayer.class, golem.getBoundingBox().inflate(5))) {

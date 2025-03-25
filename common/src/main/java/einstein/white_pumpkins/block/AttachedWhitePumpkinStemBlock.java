@@ -21,7 +21,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Map;
 
-public class AttachedWhitePumpkinStemBlock extends BushBlock {
+public class AttachedWhitePumpkinStemBlock extends VegetationBlock {
 
     public static final MapCodec<AttachedWhitePumpkinStemBlock> CODEC = simpleCodec(AttachedWhitePumpkinStemBlock::new);
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
@@ -38,7 +38,7 @@ public class AttachedWhitePumpkinStemBlock extends BushBlock {
     }
 
     @Override
-    protected MapCodec<? extends BushBlock> codec() {
+    public MapCodec<? extends VegetationBlock> codec() {
         return CODEC;
     }
 

@@ -51,9 +51,10 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.SPAWN_EGGS).register(entries -> {
             entries.addAfter(Items.SNOW_GOLEM_SPAWN_EGG, new ItemStack(ModInit.WHITE_PUMPKIN_SNOW_GOLEM_SPAWN_EGG.get()));
         });
-        TradeOfferHelper.registerWanderingTraderOffers(1, listings -> {
-            listings.add(new VillagerTrades.ItemsForEmeralds(ModInit.WHITE_PUMPKIN_SEEDS.get(), 2, 1, 1));
-        });
+        TradeOfferHelper.registerWanderingTraderOffers(builder ->
+                builder.addOffersToPool(TradeOfferHelper.WanderingTraderOffersBuilder.SELL_COMMON_ITEMS_POOL,
+                        new VillagerTrades.ItemsForEmeralds(ModInit.WHITE_PUMPKIN_SEEDS.get(), 2, 1, 1))
+        );
         FabricDefaultAttributeRegistry.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), WhitePumpkinSnowGolem.createAttributes());
         LootTableEvents.MODIFY.register((key, builder, source, registries) -> {
             if (source.isBuiltin()) {

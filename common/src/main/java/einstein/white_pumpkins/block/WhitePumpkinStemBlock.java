@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class WhitePumpkinStemBlock extends BushBlock implements BonemealableBlock {
+public class WhitePumpkinStemBlock extends VegetationBlock implements BonemealableBlock {
 
     public static final MapCodec<WhitePumpkinStemBlock> CODEC = simpleCodec(WhitePumpkinStemBlock::new);
     public static final int MAX_AGE = 7;
@@ -45,7 +45,7 @@ public class WhitePumpkinStemBlock extends BushBlock implements BonemealableBloc
     }
 
     @Override
-    protected MapCodec<? extends BushBlock> codec() {
+    public MapCodec<? extends VegetationBlock> codec() {
         return CODEC;
     }
 

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "white_pumpkins:item/white_pumpkin_snow_golem_spawn_egg"
+  }
+}
