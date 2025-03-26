@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "#",
+    "$"
+  ],
+  "key": {
+    "#": "white_pumpkins:carved_white_pumpkin",
+    "$": "minecraft:soul_torch"
+  },
+  "result": {
+    "id": "white_pumpkins:white_soul_jack_o_lantern"
+  }
+}

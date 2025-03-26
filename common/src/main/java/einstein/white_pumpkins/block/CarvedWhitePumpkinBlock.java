@@ -34,7 +34,9 @@ public class CarvedWhitePumpkinBlock extends HorizontalDirectionalBlock {
     public static final MapCodec<CarvedWhitePumpkinBlock> CODEC = simpleCodec(CarvedWhitePumpkinBlock::new);
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     private static final Predicate<BlockState> PUMPKINS_PREDICATE = (state) ->
-            state != null && (state.is(ModInit.CARVED_WHITE_PUMPKIN.get()) || state.is(ModInit.WHITE_JACK_O_LANTERN.get()));
+            state != null && (state.is(ModInit.CARVED_WHITE_PUMPKIN.get())
+                    || state.is(ModInit.WHITE_JACK_O_LANTERN.get())
+                    || state.is(ModInit.WHITE_SOUL_JACK_O_LANTERN.get()));
 
     @Nullable
     private BlockPattern snowGolemFull;

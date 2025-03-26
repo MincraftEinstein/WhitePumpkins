@@ -40,6 +40,7 @@ public class ModInit {
                     .build()
             ));
     public static final Supplier<Block> WHITE_JACK_O_LANTERN = register("white_jack_o_lantern", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).mapColor(DyeColor.WHITE));
+    public static final Supplier<Block> WHITE_SOUL_JACK_O_LANTERN = register("white_soul_jack_o_lantern", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).mapColor(DyeColor.WHITE));
     public static final Supplier<Block> WHITE_PUMPKIN_STEM = register("white_pumpkin_stem", false, WhitePumpkinStemBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PUMPKIN_STEM));
     public static final Supplier<Block> ATTACHED_WHITE_PUMPKIN_STEM = register("attached_white_pumpkin_stem", false, AttachedWhitePumpkinStemBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ATTACHED_PUMPKIN_STEM));
     public static final Supplier<Item> WHITE_PUMPKIN_SEEDS = registerItem("white_pumpkin_seeds", properties -> new BlockItem(WHITE_PUMPKIN_STEM.get(), properties), new Item.Properties().useItemDescriptionPrefix());
