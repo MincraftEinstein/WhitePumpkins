@@ -9,6 +9,9 @@
     "SnowGolemRendererMixin",
     "SnowGolemRenderStateMixin"
   ],
+  "mixins": [
+    "CreakingMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }
