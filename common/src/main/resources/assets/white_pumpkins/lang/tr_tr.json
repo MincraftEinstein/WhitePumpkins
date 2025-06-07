@@ -1,0 +1,13 @@
+{
+  "block.white_pumpkins.white_pumpkin": "Beyaz Balkabağı",
+  "block.white_pumpkins.carved_white_pumpkin": "Oyulmuş Beyaz Balkabağı",
+  "block.white_pumpkins.white_jack_o_lantern": "Beyaz Jack o' Lantern",
+  "block.white_pumpkins.white_pumpkin_stem": "Beyaz Balkabağı Sapı",
+  "block.white_pumpkins.attached_white_pumpkin_stem": "Ekli Beyaz Balkabağı Sapı",
+  "item.white_pumpkins.white_pumpkin_seeds": "Beyaz Kabak Çekirdeği",
+  "item.white_pumpkins.white_pumpkin_pie": "Beyaz Balkabağı Turta",
+  "item.white_pumpkins.white_pumpkin_snow_golem_spawn_egg": "Beyaz Balkabağı Kar Golem Yumurtası",
+  "entity.white_pumpkins.white_pumpkin_snow_golem": "Beyaz Balkabağı Kar Golemi",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.title": "Gizemlere Açılan Bir Kapı",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.description": "Başınıza oyulmuş beyaz bir balkabağı takın"
+}
