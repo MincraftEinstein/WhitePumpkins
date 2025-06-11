@@ -12,6 +12,7 @@
   ],
   "mixins": [
     "CreakingMixin",
+    "DamageSourceMixin",
     "PlayerMixin"
   ],
   "injectors": {
