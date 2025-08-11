@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:pumpkin" },
+    { "item": "minecraft:white_dye" }
+  ],
+  "result": {
+    "id": "white_pumpkins:white_pumpkin",
+    "count": 1
+  }
+}
