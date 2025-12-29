@@ -8,8 +8,8 @@ import einstein.white_pumpkins.entity.WhitePumpkinSnowGolem;
 import einstein.white_pumpkins.platform.Services;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobCategory;
@@ -30,7 +30,7 @@ import static einstein.white_pumpkins.WhitePumpkins.loc;
 
 public class ModInit {
 
-    private static final ResourceLocation PUMPKIN_OVERLAY = ResourceLocation.withDefaultNamespace("misc/pumpkinblur");
+    private static final Identifier PUMPKIN_OVERLAY = Identifier.withDefaultNamespace("misc/pumpkinblur");
 
     public static final Supplier<Block> WHITE_PUMPKIN = register("white_pumpkin", true, WhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PUMPKIN).mapColor(DyeColor.WHITE));
     public static final Supplier<Block> CARVED_WHITE_PUMPKIN = register("carved_white_pumpkin", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CARVED_PUMPKIN).mapColor(DyeColor.WHITE),
@@ -43,15 +43,15 @@ public class ModInit {
     public static final Supplier<Block> WHITE_SOUL_JACK_O_LANTERN = register("white_soul_jack_o_lantern", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).mapColor(DyeColor.WHITE));
     public static final Supplier<Block> WHITE_PUMPKIN_STEM = register("white_pumpkin_stem", false, WhitePumpkinStemBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PUMPKIN_STEM));
     public static final Supplier<Block> ATTACHED_WHITE_PUMPKIN_STEM = register("attached_white_pumpkin_stem", false, AttachedWhitePumpkinStemBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ATTACHED_PUMPKIN_STEM));
-    public static final Supplier<Item> WHITE_PUMPKIN_SEEDS = registerItem("white_pumpkin_seeds", properties -> new BlockItem(WHITE_PUMPKIN_STEM.get(), properties), new Item.Properties().useItemDescriptionPrefix());
-    public static final Supplier<Item> WHITE_PUMPKIN_PIE = registerItem("white_pumpkin_pie", Item::new, new Item.Properties().food(Foods.PUMPKIN_PIE));
+    public static final Supplier<Item> WHITE_PUMPKIN_SEEDS = registerItem("white_pumpkin_seeds", properties -> new BlockItem(WHITE_PUMPKIN_STEM.get(), properties), () -> new Item.Properties().useItemDescriptionPrefix());
+    public static final Supplier<Item> WHITE_PUMPKIN_PIE = registerItem("white_pumpkin_pie", Item::new, () -> new Item.Properties().food(Foods.PUMPKIN_PIE));
     public static final Supplier<EntityType<WhitePumpkinSnowGolem>> WHITE_PUMPKIN_SNOW_GOLEM = Services.REGISTRY.registerEntity("white_pumpkin_snow_golem", () -> EntityType.Builder.of(WhitePumpkinSnowGolem::new, MobCategory.MISC)
             .immuneTo(Blocks.POWDER_SNOW)
             .sized(0.7F, 1.9F)
             .eyeHeight(1.7F)
             .clientTrackingRange(8)
     );
-    public static final Supplier<Item> WHITE_PUMPKIN_SNOW_GOLEM_SPAWN_EGG = registerItem("white_pumpkin_snow_golem_spawn_egg", properties -> new SpawnEggItem(WHITE_PUMPKIN_SNOW_GOLEM.get(), properties), new Item.Properties());
+    public static final Supplier<Item> WHITE_PUMPKIN_SNOW_GOLEM_SPAWN_EGG = registerItem("white_pumpkin_snow_golem_spawn_egg", SpawnEggItem::new, () -> new Item.Properties().spawnEgg(WHITE_PUMPKIN_SNOW_GOLEM.get()));
 
     public static void init() {
     }
@@ -65,13 +65,12 @@ public class ModInit {
         Supplier<T> instance = Services.REGISTRY.registerBlock(name, () -> block.apply(blockProperties));
 
         if (hasItem) {
-            registerItem(name, properties -> new BlockItem(instance.get(), properties), itemProperties.useBlockDescriptionPrefix());
+            registerItem(name, properties -> new BlockItem(instance.get(), properties), itemProperties::useBlockDescriptionPrefix);
         }
         return instance;
     }
 
-    private static <T extends Item> Supplier<T> registerItem(String name, Function<Item.Properties, T> item, Item.Properties properties) {
-        properties.setId(ResourceKey.create(Registries.ITEM, loc(name)));
-        return Services.REGISTRY.registerItem(name, () -> item.apply(properties));
+    private static <T extends Item> Supplier<T> registerItem(String name, Function<Item.Properties, T> item, Supplier<Item.Properties> properties) {
+        return Services.REGISTRY.registerItem(name, () -> item.apply(properties.get().setId(ResourceKey.create(Registries.ITEM, loc(name)))));
     }
 }

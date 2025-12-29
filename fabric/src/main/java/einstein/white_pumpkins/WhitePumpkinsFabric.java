@@ -7,17 +7,16 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.SnowGolemRenderer;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
-import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -85,9 +84,8 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
 
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.putBlock(ModInit.WHITE_PUMPKIN_STEM.get(), ChunkSectionLayer.CUTOUT);
-        BlockRenderLayerMap.putBlock(ModInit.ATTACHED_WHITE_PUMPKIN_STEM.get(), ChunkSectionLayer.CUTOUT);
-        EntityRendererRegistry.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), SnowGolemRenderer::new);
+        BlockRenderLayerMap.putBlocks(ChunkSectionLayer.CUTOUT, ModInit.WHITE_PUMPKIN_STEM.get(), ModInit.ATTACHED_WHITE_PUMPKIN_STEM.get());
+        EntityRenderers.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), SnowGolemRenderer::new);
         ColorProviderRegistry.BLOCK.register(WhitePumpkins::getWhitePumpkinSteamColor, ModInit.WHITE_PUMPKIN_STEM.get());
     }
 }

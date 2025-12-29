@@ -3,8 +3,8 @@ package einstein.white_pumpkins;
 import einstein.white_pumpkins.block.WhitePumpkinStemBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -42,7 +42,7 @@ public class WhitePumpkins {
         return entity.getItemBySlot(EquipmentSlot.HEAD).is(ModInit.CARVED_WHITE_PUMPKIN.get().asItem());
     }
 
-    public static ResourceLocation loc(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    public static Identifier loc(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 }

@@ -32,7 +32,7 @@ public class WhitePumpkinBlock extends Block {
             return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
         }
 
-        if (level.isClientSide) {
+        if (level.isClientSide()) {
             return InteractionResult.SUCCESS;
         }
 
@@ -54,7 +54,7 @@ public class WhitePumpkinBlock extends Block {
         level.playSound(null, pos, SoundEvents.PUMPKIN_CARVE, SoundSource.BLOCKS, 1, 1);
         level.setBlock(pos, ModInit.CARVED_WHITE_PUMPKIN.get().defaultBlockState().setValue(CarvedWhitePumpkinBlock.FACING, oppositeDirection), Block.UPDATE_ALL_IMMEDIATE);
         level.addFreshEntity(itemEntity);
-        stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+        stack.hurtAndBreak(1, player, hand);
         level.gameEvent(player, GameEvent.SHEAR, pos);
         player.awardStat(Stats.ITEM_USED.get(Items.SHEARS));
         return InteractionResult.CONSUME;
