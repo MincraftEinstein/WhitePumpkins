@@ -1,0 +1,14 @@
+{
+  "block.white_pumpkins.white_pumpkin": "Citrouille blanche",
+  "block.white_pumpkins.carved_white_pumpkin": "Citrouille blanche sculptée",
+  "block.white_pumpkins.white_jack_o_lantern": "Citrouille d'Halloween blanche",
+  "block.white_pumpkins.white_soul_jack_o_lantern": "Citrouille d'Halloween âme blanche",
+  "block.white_pumpkins.white_pumpkin_stem": "Tige de citrouille blanche",
+  "block.white_pumpkins.attached_white_pumpkin_stem": "Tige de citrouille blanche attachée",
+  "item.white_pumpkins.white_pumpkin_seeds": "Graines de citrouille blanches",
+  "item.white_pumpkins.white_pumpkin_pie": "Tarte à la citrouille blanche",
+  "item.white_pumpkins.white_pumpkin_snow_golem_spawn_egg": "Œuf d'apparition de golem de neige à citrouille blanche",
+  "entity.white_pumpkins.white_pumpkin_snow_golem": "Golem de neige citrouille blanche",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.title": "Un portail vers le mystère",
+  "advancement.white_pumpkins.wear_carved_white_pumpkin.description": "Portez une citrouille blanche sculptée sur votre tête"
+}
