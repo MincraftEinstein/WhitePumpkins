@@ -11,6 +11,7 @@
     "SnowGolemRenderStateMixin"
   ],
   "mixins": [
+    "ZombieAndAbstractSkeletonMixin",
     "CreakingMixin",
     "DamageSourceMixin",
     "PlayerMixin"
