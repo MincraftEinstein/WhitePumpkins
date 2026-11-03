@@ -14,6 +14,9 @@ issueTrackerURL = "https://github.com/MincraftEinstein/WhitePumpkins/issues"
     authors = "${mod_author}"
     description = '''${description}'''
 
+[modProperties]
+    fzzy_config = "subtle_effects"
+
 [[accessTransformers]]
     file = "META-INF/accesstransformer.cfg"
 
@@ -31,5 +34,12 @@ issueTrackerURL = "https://github.com/MincraftEinstein/WhitePumpkins/issues"
     modId = "minecraft"
     type = "required"
     versionRange = "[${minecraft_version}, ${max_minecraft_version})"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.white_pumpkins]]
+    modId = "fzzy_config"
+    type = "required"
+    versionRange = "[${fzzy_config_version},)"
     ordering = "NONE"
     side = "BOTH"

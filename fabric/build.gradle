@@ -12,6 +12,7 @@ dependencies {
 
     modImplementation "net.fabricmc:fabric-loader:${fabric_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+    modImplementation("me.fzzyhmstrs:fzzy_config:${fzzy_config_version}")
 }
 
 loom {
