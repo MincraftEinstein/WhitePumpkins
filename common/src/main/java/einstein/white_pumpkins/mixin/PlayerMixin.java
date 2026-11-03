@@ -1,9 +1,15 @@
 package einstein.white_pumpkins.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
 import einstein.white_pumpkins.WhitePumpkins;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.scores.PlayerTeam;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -14,6 +20,11 @@ public class PlayerMixin {
 
     @Unique
     private final Player whitePumpkins$player = (Player) (Object) this;
+
+    @WrapOperation(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;getEnchantedDamage(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;)F"))
+    private float modifyDamage(Player player, Entity targetEntity, float damage, DamageSource damageSource, Operation<Float> original, @Local ItemStack weaponStack) {
+        return WhitePumpkins.applyExtraWhitePumpkinDamage(weaponStack, player, original.call(player, targetEntity, damage, damageSource));
+    }
 
     @ModifyReturnValue(method = "getName", at = @At("RETURN"))
     private Component obfuscatePlayerName(Component original) {

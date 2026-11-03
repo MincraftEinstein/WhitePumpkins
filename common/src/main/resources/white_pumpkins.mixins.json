@@ -11,10 +11,11 @@
     "SnowGolemRenderStateMixin"
   ],
   "mixins": [
-    "ZombieAndAbstractSkeletonMixin",
     "CreakingMixin",
     "DamageSourceMixin",
-    "PlayerMixin"
+    "MobMixin",
+    "PlayerMixin",
+    "ZombieAndAbstractSkeletonMixin"
   ],
   "injectors": {
     "defaultRequire": 1
