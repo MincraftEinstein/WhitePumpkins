@@ -20,7 +20,7 @@ public class DamageSourceMixin {
     private Component obfuscateItemName(Component original) {
         Entity entity = whitePumpkins$damageSource.getEntity() == null ? whitePumpkins$damageSource.getDirectEntity() : whitePumpkins$damageSource.getEntity();
         if (entity instanceof LivingEntity livingEntity) {
-            if (WhitePumpkins.isWearingWhitePumpkin(livingEntity)) {
+            if (WhitePumpkins.shouldObfuscateNames(livingEntity)) {
                 return Component.literal("Unknown").setStyle(original.getStyle().withHoverEvent(null).withClickEvent(null).withObfuscated(true));
             }
         }

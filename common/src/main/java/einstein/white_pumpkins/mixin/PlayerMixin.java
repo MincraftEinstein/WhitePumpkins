@@ -28,7 +28,7 @@ public class PlayerMixin {
 
     @ModifyReturnValue(method = "getName", at = @At("RETURN"))
     private Component obfuscatePlayerName(Component original) {
-        if (WhitePumpkins.isWearingWhitePumpkin(whitePumpkins$player)) {
+        if (WhitePumpkins.shouldObfuscateNames(whitePumpkins$player)) {
             return Component.literal("Unknown").setStyle(original.getStyle().withObfuscated(true));
         }
         return original;
@@ -36,7 +36,7 @@ public class PlayerMixin {
 
     @ModifyReturnValue(method = "getDisplayName", at = @At(value = "RETURN"))
     private Component skipDisplayNameEvents(Component original) {
-        if (WhitePumpkins.isWearingWhitePumpkin(whitePumpkins$player)) {
+        if (WhitePumpkins.shouldObfuscateNames(whitePumpkins$player)) {
             return PlayerTeam.formatNameForTeam(whitePumpkins$player.getTeam(), whitePumpkins$player.getName());
         }
         return original;

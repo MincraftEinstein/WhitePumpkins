@@ -9,6 +9,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ARGB;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
@@ -42,6 +43,10 @@ public class WhitePumpkins {
         int i = age + 1;
         int i1 = (int) (((255F - 32F) / WhitePumpkinStemBlock.MAX_AGE) * age);
         return ARGB.color(32 + i1, 247 + i, 4 * i + i1);
+    }
+
+    public static boolean shouldObfuscateNames(Entity entity) {
+        return CONFIGS.whitePumpkinsObfuscateNames && entity instanceof LivingEntity livingEntity && isWearingWhitePumpkin(livingEntity);
     }
 
     public static boolean isWearingWhitePumpkin(LivingEntity entity) {

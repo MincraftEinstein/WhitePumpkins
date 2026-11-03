@@ -13,6 +13,7 @@
   "mixins": [
     "CreakingMixin",
     "DamageSourceMixin",
+    "EntityMixin",
     "MobMixin",
     "PlayerMixin",
     "ZombieAndAbstractSkeletonMixin"

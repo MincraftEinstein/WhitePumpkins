@@ -10,6 +10,7 @@ import static einstein.white_pumpkins.WhitePumpkins.MOD_ID;
 public class ModConfigs extends Config {
 
     public ValidatedFloat whitePumpkinEquippedExtraDamage = new ValidatedFloat(5, 128, 0);
+    public boolean whitePumpkinsObfuscateNames = true;
 
     public ModConfigs() {
         super(WhitePumpkins.loc("main"), "", "", MOD_ID);

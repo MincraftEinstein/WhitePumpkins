@@ -14,5 +14,7 @@
   "tag.item.white_pumpkins.white_pumpkin_extra_damage": "White Pumpkin Extra Damage",
   "config.white_pumpkins": "White Pumpkins Config",
   "config.white_pumpkins.whitePumpkinEquippedExtraDamage": "White Pumpkin Equipped Extra Damage",
-  "config.white_pumpkins.whitePumpkinEquippedExtraDamage.desc": "The amount of extra damage players or mobs wearing white pumpkins deal when using an item in the #white_pumpkins:white_pumpkin_extra_damage tag"
+  "config.white_pumpkins.whitePumpkinEquippedExtraDamage.desc": "The amount of extra damage players or mobs wearing white pumpkins deal when using an item in the #white_pumpkins:white_pumpkin_extra_damage tag",
+  "config.white_pumpkins.whitePumpkinsObfuscateNames": "White Pumpkins Obfuscate Names",
+  "config.white_pumpkins.whitePumpkinsObfuscateNames.desc": "Should players or mobs wearing white pumpkins have their name tag and death message item name be obfuscated"
 }
