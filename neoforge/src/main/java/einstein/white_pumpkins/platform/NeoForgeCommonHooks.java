@@ -12,4 +12,9 @@ public class NeoForgeCommonHooks implements CommonHooks {
     public float getCropGrowthSpeed(BlockState state, BlockPos pos, Level level) {
         return CropBlock.getGrowthSpeed(state, level, pos);
     }
+
+    @Override
+    public boolean isForgeLike() {
+        return true;
+    }
 }

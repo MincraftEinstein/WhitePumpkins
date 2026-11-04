@@ -1,10 +1,14 @@
 package einstein.white_pumpkins.util;
 
-import einstein.white_pumpkins.init.ModInit;
+import com.google.common.base.Suppliers;
 import einstein.white_pumpkins.WhitePumpkins;
 import einstein.white_pumpkins.block.WhitePumpkinStemBlock;
+import einstein.white_pumpkins.init.ModInit;
+import einstein.white_pumpkins.platform.Services;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ARGB;
@@ -19,6 +23,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.storage.loot.LootTable;
 
+import java.util.function.Supplier;
+
 public class Util {
 
     public static final ResourceKey<LootTable> MINESHAFT_INJECTED_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, WhitePumpkins.loc("injected/abandoned_mineshaft"));
@@ -26,6 +32,8 @@ public class Util {
     public static final ResourceKey<PlacedFeature> PATCH_WHITE_PUMPKIN_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, WhitePumpkins.loc("patch_white_pumpkin"));
     public static final TagKey<Biome> HAS_WHITE_PUMPKIN_PATCHES_TAG = TagKey.create(Registries.BIOME, WhitePumpkins.loc("has_white_pumpkin_patches"));
     public static final TagKey<Item> WHITE_PUMPKIN_EXTRA_DAMAGE = TagKey.create(Registries.ITEM, WhitePumpkins.loc("white_pumpkin_extra_damage"));
+    public static final Supplier<Identifier> PACK_LOCATION = Suppliers.memoize(() -> WhitePumpkins.loc("animated_white_pumpkin_eyes").withPrefix(Services.HOOKS.isForgeLike() ? "resourcepacks/" : ""));
+    public static final Component PACK_NAME = Component.translatable("resourcePack.white_pumpkins.animated_white_pumpkin_eyes.name");
 
     public static int getWhitePumpkinSteamColor(BlockState state, BlockAndTintGetter tintGetter, BlockPos pos, int tintIndex) {
         int age = state.getValue(WhitePumpkinStemBlock.AGE);

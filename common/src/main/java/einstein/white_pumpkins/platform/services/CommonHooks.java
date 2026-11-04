@@ -7,4 +7,8 @@ import net.minecraft.world.level.block.state.BlockState;
 public interface CommonHooks {
 
     float getCropGrowthSpeed(BlockState state, BlockPos pos, Level level);
+
+    default boolean isForgeLike() {
+        return false;
+    }
 }

@@ -1,0 +1,9 @@
+{
+  "pack": {
+    "description": {
+      "translate": "resourcePack.white_pumpkins.animated_white_pumpkin_eyes.description"
+    },
+    "max_format": 75,
+    "min_format": 75
+  }
+}

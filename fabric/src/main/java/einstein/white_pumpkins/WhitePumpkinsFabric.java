@@ -14,6 +14,9 @@ import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
+import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.SnowGolemRenderer;
@@ -89,5 +92,9 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
         BlockRenderLayerMap.putBlocks(ChunkSectionLayer.CUTOUT, ModInit.WHITE_PUMPKIN_STEM.get(), ModInit.ATTACHED_WHITE_PUMPKIN_STEM.get());
         EntityRenderers.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), SnowGolemRenderer::new);
         ColorProviderRegistry.BLOCK.register(Util::getWhitePumpkinSteamColor, ModInit.WHITE_PUMPKIN_STEM.get());
+        ResourceLoader.registerBuiltinPack(Util.PACK_LOCATION.get(),
+                FabricLoader.getInstance().getModContainer(WhitePumpkins.MOD_ID).orElseThrow(),
+                Util.PACK_NAME, PackActivationType.NORMAL
+        );
     }
 }

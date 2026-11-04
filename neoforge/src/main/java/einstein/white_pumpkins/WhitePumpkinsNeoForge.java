@@ -5,6 +5,9 @@ import einstein.white_pumpkins.init.ModInit;
 import einstein.white_pumpkins.util.Util;
 import net.minecraft.client.renderer.entity.SnowGolemRenderer;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +19,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.common.BasicItemListing;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.village.WandererTradesEvent;
@@ -47,6 +51,12 @@ public class WhitePumpkinsNeoForge {
                 event.put(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), WhitePumpkinSnowGolem.createAttributes().build()));
         modEventBus.addListener((RegisterColorHandlersEvent.Block event) ->
                 event.register(Util::getWhitePumpkinSteamColor, ModInit.WHITE_PUMPKIN_STEM.get()));
+        modEventBus.addListener((AddPackFindersEvent event) -> {
+            if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+                event.addPackFinders(Util.PACK_LOCATION.get(), PackType.CLIENT_RESOURCES,
+                        Util.PACK_NAME, PackSource.BUILT_IN, false, Pack.Position.TOP);
+            }
+        });
         NeoForge.EVENT_BUS.addListener((WandererTradesEvent event) -> {
             event.getGenericTrades().add(new BasicItemListing(2, new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get()), 12, 1));
         });

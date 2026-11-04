@@ -2,7 +2,7 @@
   "credit": "Made with Blockbench by MincraftEinstein",
   "parent": "minecraft:block/orientable",
   "textures": {
-    "front": "white_pumpkins:block/carved_white_pumpkin_worn",
+    "front": "white_pumpkins:block/carved_white_pumpkin",
     "front_overlay": "white_pumpkins:block/carved_white_pumpkin_worn_overlay",
     "side": "white_pumpkins:block/white_pumpkin_side",
     "top": "white_pumpkins:block/white_pumpkin_top"
@@ -21,8 +21,8 @@
       }
     },
     {
-      "from": [ 0, 0, 0 ],
-      "to": [ 16, 16, 0 ],
+      "from": [ 0, 0, -0.001 ],
+      "to": [ 16, 16, -0.001 ],
       "light_emission": 15,
       "faces": {
         "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#front_overlay" }
