@@ -1,6 +1,7 @@
 package einstein.white_pumpkins;
 
 import einstein.white_pumpkins.entity.WhitePumpkinSnowGolem;
+import einstein.white_pumpkins.init.ModInit;
 import einstein.white_pumpkins.util.Util;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;

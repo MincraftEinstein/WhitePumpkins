@@ -1,4 +1,4 @@
-package einstein.white_pumpkins.mixin;
+package einstein.white_pumpkins.mixin.common;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;

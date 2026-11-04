@@ -1,4 +1,4 @@
-package einstein.white_pumpkins.mixin;
+package einstein.white_pumpkins.mixin.client;
 
 import einstein.white_pumpkins.init.ModInit;
 import einstein.white_pumpkins.util.SnowGolemRenderStateAccessor;
