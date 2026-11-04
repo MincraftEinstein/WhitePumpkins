@@ -120,7 +120,7 @@ public class CarvedWhitePumpkinBlock extends HorizontalDirectionalBlock {
                     .aisle("%#%", "$$$", "%$%")
                     .where('#', BlockInWorld.hasState(PUMPKINS_PREDICATE))
                     .where('$', BlockInWorld.hasState(BlockStatePredicate.forBlock(Blocks.IRON_BLOCK)))
-                    .where('%', (blockInWorld) -> blockInWorld.getState().isAir())
+                    .where('%', BlockInWorld.hasState(BlockBehaviour.BlockStateBase::isAir))
                     .build();
         }
 
