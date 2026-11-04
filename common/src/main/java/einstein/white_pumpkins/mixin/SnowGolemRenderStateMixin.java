@@ -1,6 +1,6 @@
 package einstein.white_pumpkins.mixin;
 
-import einstein.white_pumpkins.SnowGolemRenderStateAccessor;
+import einstein.white_pumpkins.util.SnowGolemRenderStateAccessor;
 import net.minecraft.client.renderer.entity.state.SnowGolemRenderState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;

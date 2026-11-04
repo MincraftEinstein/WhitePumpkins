@@ -1,7 +1,7 @@
 package einstein.white_pumpkins.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import einstein.white_pumpkins.WhitePumpkins;
+import einstein.white_pumpkins.util.Util;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -20,7 +20,7 @@ public class DamageSourceMixin {
     private Component obfuscateItemName(Component original) {
         Entity entity = whitePumpkins$damageSource.getEntity() == null ? whitePumpkins$damageSource.getDirectEntity() : whitePumpkins$damageSource.getEntity();
         if (entity instanceof LivingEntity livingEntity) {
-            if (WhitePumpkins.shouldObfuscateNames(livingEntity)) {
+            if (Util.shouldObfuscateNames(livingEntity)) {
                 return Component.literal("Unknown").setStyle(original.getStyle().withHoverEvent(null).withClickEvent(null).withObfuscated(true));
             }
         }

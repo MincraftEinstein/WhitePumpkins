@@ -1,4 +1,4 @@
-package einstein.white_pumpkins;
+package einstein.white_pumpkins.util;
 
 public interface SnowGolemRenderStateAccessor {
 

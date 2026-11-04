@@ -1,6 +1,6 @@
 package einstein.white_pumpkins.mixin;
 
-import einstein.white_pumpkins.WhitePumpkins;
+import einstein.white_pumpkins.util.Util;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.world.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,7 +14,7 @@ public class LivingEntityRendererMixin {
 
     @Inject(method = "shouldShowName*", at = @At("HEAD"), cancellable = true)
     private void shouldShowName(@Coerce Entity entity, double v, CallbackInfoReturnable<Boolean> cir) {
-        if (WhitePumpkins.shouldObfuscateNames(entity)) {
+        if (Util.shouldObfuscateNames(entity)) {
             cir.setReturnValue(false);
             cir.cancel();
         }

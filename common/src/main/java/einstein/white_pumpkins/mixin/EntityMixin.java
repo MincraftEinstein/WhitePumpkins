@@ -1,7 +1,7 @@
 package einstein.white_pumpkins.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import einstein.white_pumpkins.WhitePumpkins;
+import einstein.white_pumpkins.util.Util;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.scores.PlayerTeam;
@@ -18,7 +18,7 @@ public class EntityMixin {
 
     @ModifyReturnValue(method = "getDisplayName", at = @At(value = "RETURN"))
     private Component skipDisplayNameEvents(Component original) {
-        if (WhitePumpkins.shouldObfuscateNames(whitePumpkins$entity)) {
+        if (Util.shouldObfuscateNames(whitePumpkins$entity)) {
             return PlayerTeam.formatNameForTeam(whitePumpkins$entity.getTeam(), whitePumpkins$entity.getName());
         }
         return original;
@@ -26,7 +26,7 @@ public class EntityMixin {
 
     @ModifyReturnValue(method = "getCustomName", at = @At("RETURN"))
     private Component obfuscateEntityName(@Nullable Component original) {
-        if (original != null && WhitePumpkins.shouldObfuscateNames(whitePumpkins$entity)) {
+        if (original != null && Util.shouldObfuscateNames(whitePumpkins$entity)) {
             return Component.literal("Unknown").setStyle(original.getStyle().withObfuscated(true));
         }
         return original;

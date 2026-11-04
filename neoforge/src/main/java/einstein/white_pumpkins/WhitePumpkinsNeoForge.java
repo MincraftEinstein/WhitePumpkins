@@ -2,6 +2,7 @@ package einstein.white_pumpkins;
 
 import einstein.white_pumpkins.entity.WhitePumpkinSnowGolem;
 import einstein.white_pumpkins.platform.NeoForgeRegistryHelper;
+import einstein.white_pumpkins.util.Util;
 import net.minecraft.client.renderer.entity.SnowGolemRenderer;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
@@ -48,7 +49,7 @@ public class WhitePumpkinsNeoForge {
         modEventBus.addListener((EntityAttributeCreationEvent event) ->
                 event.put(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), WhitePumpkinSnowGolem.createAttributes().build()));
         modEventBus.addListener((RegisterColorHandlersEvent.Block event) ->
-                event.register(WhitePumpkins::getWhitePumpkinSteamColor, ModInit.WHITE_PUMPKIN_STEM.get()));
+                event.register(Util::getWhitePumpkinSteamColor, ModInit.WHITE_PUMPKIN_STEM.get()));
         NeoForge.EVENT_BUS.addListener((WandererTradesEvent event) -> {
             event.getGenericTrades().add(new BasicItemListing(2, new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get()), 12, 1));
         });

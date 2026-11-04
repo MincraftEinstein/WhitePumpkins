@@ -3,7 +3,7 @@ package einstein.white_pumpkins.mixin;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import einstein.white_pumpkins.ModInit;
-import einstein.white_pumpkins.WhitePumpkins;
+import einstein.white_pumpkins.util.Util;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.skeleton.AbstractSkeleton;
@@ -22,13 +22,13 @@ public class ZombieAndAbstractSkeletonMixin {
 
     @ModifyExpressionValue(method = "finalizeSpawn", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;CARVED_PUMPKIN:Lnet/minecraft/world/level/block/Block;"))
     private Block replacePumpkin(Block carvedPumpkinBlock, ServerLevelAccessor accessor) {
-        return accessor.getBiome(whitePumpkins$me.blockPosition()).is(WhitePumpkins.HAS_WHITE_PUMPKIN_PATCHES_TAG)
+        return accessor.getBiome(whitePumpkins$me.blockPosition()).is(Util.HAS_WHITE_PUMPKIN_PATCHES_TAG)
                 ? ModInit.CARVED_WHITE_PUMPKIN.get() : carvedPumpkinBlock;
     }
 
     @ModifyExpressionValue(method = "finalizeSpawn", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;JACK_O_LANTERN:Lnet/minecraft/world/level/block/Block;"))
     private Block replaceJackOLantern(Block jackOLanternBlock, ServerLevelAccessor accessor, @Local RandomSource random) {
-        return accessor.getBiome(whitePumpkins$me.blockPosition()).is(WhitePumpkins.HAS_WHITE_PUMPKIN_PATCHES_TAG)
+        return accessor.getBiome(whitePumpkins$me.blockPosition()).is(Util.HAS_WHITE_PUMPKIN_PATCHES_TAG)
                 ? (random.nextBoolean() ? ModInit.WHITE_JACK_O_LANTERN.get() : ModInit.WHITE_SOUL_JACK_O_LANTERN.get())
                 : jackOLanternBlock;
     }

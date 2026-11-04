@@ -1,6 +1,7 @@
 package einstein.white_pumpkins;
 
 import einstein.white_pumpkins.entity.WhitePumpkinSnowGolem;
+import einstein.white_pumpkins.util.Util;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -26,7 +27,7 @@ import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 
-import static einstein.white_pumpkins.WhitePumpkins.HAS_WHITE_PUMPKIN_PATCHES_TAG;
+import static einstein.white_pumpkins.util.Util.HAS_WHITE_PUMPKIN_PATCHES_TAG;
 import static einstein.white_pumpkins.WhitePumpkins.loc;
 
 public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer {
@@ -61,23 +62,23 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
             if (source.isBuiltin()) {
                 if (key.equals(BuiltInLootTables.SIMPLE_DUNGEON)) {
                     builder.withPool(new LootPool.Builder()
-                            .add(NestedLootTable.lootTableReference(WhitePumpkins.DUNGEON_MANSION_INJECTED_LOOT_TABLE))
+                            .add(NestedLootTable.lootTableReference(Util.DUNGEON_MANSION_INJECTED_LOOT_TABLE))
                     );
                 }
                 else if (key.equals(BuiltInLootTables.ABANDONED_MINESHAFT)) {
                     builder.withPool(new LootPool.Builder()
-                            .add(NestedLootTable.lootTableReference(WhitePumpkins.MINESHAFT_INJECTED_LOOT_TABLE))
+                            .add(NestedLootTable.lootTableReference(Util.MINESHAFT_INJECTED_LOOT_TABLE))
                     );
                 }
                 else if (key.equals(BuiltInLootTables.WOODLAND_MANSION)) {
                     builder.withPool(new LootPool.Builder()
-                            .add(NestedLootTable.lootTableReference(WhitePumpkins.DUNGEON_MANSION_INJECTED_LOOT_TABLE))
+                            .add(NestedLootTable.lootTableReference(Util.DUNGEON_MANSION_INJECTED_LOOT_TABLE))
                     );
                 }
             }
         });
 
-        BiomeModifications.addFeature(context -> context.hasTag(HAS_WHITE_PUMPKIN_PATCHES_TAG), GenerationStep.Decoration.VEGETAL_DECORATION, WhitePumpkins.PATCH_WHITE_PUMPKIN_FEATURE);
+        BiomeModifications.addFeature(context -> context.hasTag(HAS_WHITE_PUMPKIN_PATCHES_TAG), GenerationStep.Decoration.VEGETAL_DECORATION, Util.PATCH_WHITE_PUMPKIN_FEATURE);
         BiomeModifications.create(loc("remove_pumpkin_patches")).add(ModificationPhase.REMOVALS, context -> context.hasTag(HAS_WHITE_PUMPKIN_PATCHES_TAG), (context, modificationContext) ->
                 modificationContext.getGenerationSettings().removeFeature(VegetationPlacements.PATCH_PUMPKIN));
     }
@@ -86,6 +87,6 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
     public void onInitializeClient() {
         BlockRenderLayerMap.putBlocks(ChunkSectionLayer.CUTOUT, ModInit.WHITE_PUMPKIN_STEM.get(), ModInit.ATTACHED_WHITE_PUMPKIN_STEM.get());
         EntityRenderers.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), SnowGolemRenderer::new);
-        ColorProviderRegistry.BLOCK.register(WhitePumpkins::getWhitePumpkinSteamColor, ModInit.WHITE_PUMPKIN_STEM.get());
+        ColorProviderRegistry.BLOCK.register(Util::getWhitePumpkinSteamColor, ModInit.WHITE_PUMPKIN_STEM.get());
     }
 }

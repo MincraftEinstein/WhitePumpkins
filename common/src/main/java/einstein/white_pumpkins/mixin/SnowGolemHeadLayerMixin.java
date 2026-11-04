@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import einstein.white_pumpkins.ModInit;
-import einstein.white_pumpkins.SnowGolemRenderStateAccessor;
+import einstein.white_pumpkins.util.SnowGolemRenderStateAccessor;
 import net.minecraft.client.renderer.entity.layers.SnowGolemHeadLayer;
 import net.minecraft.client.renderer.entity.state.SnowGolemRenderState;
 import net.minecraft.world.level.block.Block;
