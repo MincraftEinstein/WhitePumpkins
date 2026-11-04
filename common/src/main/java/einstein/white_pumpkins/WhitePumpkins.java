@@ -1,5 +1,7 @@
 package einstein.white_pumpkins;
 
+import einstein.white_pumpkins.init.ModConfigs;
+import einstein.white_pumpkins.init.ModInit;
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import me.fzzyhmstrs.fzzy_config.api.RegisterType;
 import net.minecraft.resources.Identifier;

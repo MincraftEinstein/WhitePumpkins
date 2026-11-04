@@ -1,7 +1,7 @@
 package einstein.white_pumpkins.block;
 
 import com.mojang.serialization.MapCodec;
-import einstein.white_pumpkins.ModInit;
+import einstein.white_pumpkins.init.ModInit;
 import einstein.white_pumpkins.entity.WhitePumpkinSnowGolem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;

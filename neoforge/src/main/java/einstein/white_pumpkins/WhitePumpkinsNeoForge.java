@@ -1,7 +1,6 @@
 package einstein.white_pumpkins;
 
 import einstein.white_pumpkins.entity.WhitePumpkinSnowGolem;
-import einstein.white_pumpkins.platform.NeoForgeRegistryHelper;
 import einstein.white_pumpkins.util.Util;
 import net.minecraft.client.renderer.entity.SnowGolemRenderer;
 import net.minecraft.resources.ResourceKey;
@@ -25,9 +24,6 @@ public class WhitePumpkinsNeoForge {
 
     public WhitePumpkinsNeoForge(IEventBus modEventBus) {
         WhitePumpkins.init();
-        NeoForgeRegistryHelper.BLOCKS.register(modEventBus);
-        NeoForgeRegistryHelper.ITEMS.register(modEventBus);
-        NeoForgeRegistryHelper.ENTITY_TYPES.register(modEventBus);
         modEventBus.addListener((BuildCreativeModeTabContentsEvent event) -> {
             ResourceKey<CreativeModeTab> tabKey = event.getTabKey();
             if (tabKey.equals(CreativeModeTabs.NATURAL_BLOCKS)) {

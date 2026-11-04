@@ -2,7 +2,7 @@ package einstein.white_pumpkins.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import einstein.white_pumpkins.ModInit;
+import einstein.white_pumpkins.init.ModInit;
 import einstein.white_pumpkins.util.Util;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;

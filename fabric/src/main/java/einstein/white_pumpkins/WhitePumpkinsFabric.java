@@ -27,8 +27,8 @@ import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 
-import static einstein.white_pumpkins.util.Util.HAS_WHITE_PUMPKIN_PATCHES_TAG;
 import static einstein.white_pumpkins.WhitePumpkins.loc;
+import static einstein.white_pumpkins.util.Util.HAS_WHITE_PUMPKIN_PATCHES_TAG;
 
 public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer {
 

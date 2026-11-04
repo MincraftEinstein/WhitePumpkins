@@ -1,6 +1,6 @@
 package einstein.white_pumpkins.mixin;
 
-import einstein.white_pumpkins.ModInit;
+import einstein.white_pumpkins.init.ModInit;
 import einstein.white_pumpkins.util.SnowGolemRenderStateAccessor;
 import net.minecraft.client.renderer.entity.SnowGolemRenderer;
 import net.minecraft.client.renderer.entity.state.SnowGolemRenderState;

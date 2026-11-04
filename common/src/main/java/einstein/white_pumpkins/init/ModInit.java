@@ -1,5 +1,6 @@
-package einstein.white_pumpkins;
+package einstein.white_pumpkins.init;
 
+import einstein.white_pumpkins.WhitePumpkins;
 import einstein.white_pumpkins.block.AttachedWhitePumpkinStemBlock;
 import einstein.white_pumpkins.block.CarvedWhitePumpkinBlock;
 import einstein.white_pumpkins.block.WhitePumpkinBlock;

@@ -1,5 +1,6 @@
-package einstein.white_pumpkins;
+package einstein.white_pumpkins.init;
 
+import einstein.white_pumpkins.WhitePumpkins;
 import me.fzzyhmstrs.fzzy_config.annotations.Translation;
 import me.fzzyhmstrs.fzzy_config.config.Config;
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedFloat;

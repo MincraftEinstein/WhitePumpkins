@@ -1,6 +1,6 @@
 package einstein.white_pumpkins.util;
 
-import einstein.white_pumpkins.ModInit;
+import einstein.white_pumpkins.init.ModInit;
 import einstein.white_pumpkins.WhitePumpkins;
 import einstein.white_pumpkins.block.WhitePumpkinStemBlock;
 import net.minecraft.core.BlockPos;

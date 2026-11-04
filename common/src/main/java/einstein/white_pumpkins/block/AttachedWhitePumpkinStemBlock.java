@@ -3,7 +3,7 @@ package einstein.white_pumpkins.block;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import einstein.white_pumpkins.ModInit;
+import einstein.white_pumpkins.init.ModInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
