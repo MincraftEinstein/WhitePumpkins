@@ -17,6 +17,15 @@ issueTrackerURL = "https://github.com/MincraftEinstein/WhitePumpkins/issues"
 [modProperties]
     fzzy_config = "subtle_effects"
 
+[modproperties.modmenu]
+    sources = "https://github.com/MincraftEinstein/WhitePumpkins"
+    links = [
+        "mod_menu.modrinth=https://modrinth.com/mod/white-pumpkins",
+        "mod_menu.curseforge=https://curseforge.com/minecraft/mc-mods/white-pumpkins",
+        "mod_menu.discord=https://discord.gg/gSsaFAvrBM",
+        "mod_menu.kofi=https://ko-fi.com/mincrafteinstein"
+    ]
+
 [[accessTransformers]]
     file = "META-INF/accesstransformer.cfg"
 
