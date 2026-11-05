@@ -34,6 +34,7 @@ public class WhitePumpkinsNeoForge {
             if (tabKey.equals(CreativeModeTabs.NATURAL_BLOCKS)) {
                 event.insertAfter(new ItemStack(Blocks.PUMPKIN), new ItemStack(ModInit.WHITE_PUMPKIN.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 event.insertAfter(new ItemStack(Blocks.CARVED_PUMPKIN), new ItemStack(ModInit.CARVED_WHITE_PUMPKIN.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                event.insertAfter(new ItemStack(ModInit.CARVED_WHITE_PUMPKIN.get()), new ItemStack(ModInit.DAMAGED_CARVED_WHITE_PUMPKIN.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 event.insertAfter(new ItemStack(Blocks.JACK_O_LANTERN), new ItemStack(ModInit.WHITE_JACK_O_LANTERN.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 event.insertAfter(new ItemStack(ModInit.WHITE_JACK_O_LANTERN.get()), new ItemStack(ModInit.WHITE_SOUL_JACK_O_LANTERN.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 event.insertAfter(new ItemStack(Items.PUMPKIN_SEEDS), new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

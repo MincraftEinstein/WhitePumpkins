@@ -42,11 +42,13 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
 
         CompostingChanceRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN.get(), 0.65F);
         CompostingChanceRegistry.INSTANCE.add(ModInit.CARVED_WHITE_PUMPKIN.get(), 0.65F);
+        CompostingChanceRegistry.INSTANCE.add(ModInit.DAMAGED_CARVED_WHITE_PUMPKIN.get(), 0.65F);
         CompostingChanceRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN_SEEDS.get(), 0.3F);
         CompostingChanceRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN_PIE.get(), 1F);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> {
             entries.addAfter(Blocks.PUMPKIN, new ItemStack(ModInit.WHITE_PUMPKIN.get()));
             entries.addAfter(Blocks.CARVED_PUMPKIN, new ItemStack(ModInit.CARVED_WHITE_PUMPKIN.get()));
+            entries.addAfter(ModInit.CARVED_WHITE_PUMPKIN.get(), new ItemStack(ModInit.DAMAGED_CARVED_WHITE_PUMPKIN.get()));
             entries.addAfter(Blocks.JACK_O_LANTERN, new ItemStack(ModInit.WHITE_JACK_O_LANTERN.get()));
             entries.addAfter(ModInit.WHITE_JACK_O_LANTERN.get(), new ItemStack(ModInit.WHITE_SOUL_JACK_O_LANTERN.get()));
             entries.addAfter(Items.PUMPKIN_SEEDS, new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get()));

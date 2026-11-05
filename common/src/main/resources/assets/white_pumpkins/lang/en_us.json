@@ -1,6 +1,7 @@
 {
   "block.white_pumpkins.white_pumpkin": "White Pumpkin",
   "block.white_pumpkins.carved_white_pumpkin": "Carved White Pumpkin",
+  "block.white_pumpkins.damaged_carved_white_pumpkin": "Damaged Carved White Pumpkin",
   "block.white_pumpkins.white_jack_o_lantern": "White Jack o' Lantern",
   "block.white_pumpkins.white_soul_jack_o_lantern": "White Soul Jack o' Lantern",
   "block.white_pumpkins.white_pumpkin_stem": "White Pumpkin Stem",
@@ -12,6 +13,7 @@
   "advancement.white_pumpkins.wear_carved_white_pumpkin.title": "A Portal to Mystery",
   "advancement.white_pumpkins.wear_carved_white_pumpkin.description": "Wear a carved white pumpkin on your head",
   "tag.item.white_pumpkins.white_pumpkin_extra_damage": "White Pumpkin Extra Damage",
+  "tag.item.white_pumpkins.carved_white_pumpkins": "Carved White Pumpkins",
   "resourcePack.white_pumpkins.animated_white_pumpkin_eyes.name": "Animated White Pumpkin Eyes",
   "resourcePack.white_pumpkins.animated_white_pumpkin_eyes.description": "Makes the yellow eyes of white pumpkins animated",
   "config.white_pumpkins": "White Pumpkins Config",

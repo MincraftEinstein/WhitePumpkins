@@ -26,7 +26,7 @@
             "predicate": {
               "equipment": {
                 "head": {
-                  "items": "white_pumpkins:carved_white_pumpkin"
+                  "items": "#white_pumpkins:carved_white_pumpkins"
                 }
               }
             }

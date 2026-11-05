@@ -25,14 +25,17 @@ import net.minecraft.world.level.storage.loot.LootTable;
 
 import java.util.function.Supplier;
 
+import static einstein.white_pumpkins.WhitePumpkins.loc;
+
 public class Util {
 
-    public static final ResourceKey<LootTable> MINESHAFT_INJECTED_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, WhitePumpkins.loc("injected/abandoned_mineshaft"));
-    public static final ResourceKey<LootTable> DUNGEON_MANSION_INJECTED_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, WhitePumpkins.loc("injected/simple_dungeon_woodland_mansion"));
-    public static final ResourceKey<PlacedFeature> PATCH_WHITE_PUMPKIN_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, WhitePumpkins.loc("patch_white_pumpkin"));
-    public static final TagKey<Biome> HAS_WHITE_PUMPKIN_PATCHES_TAG = TagKey.create(Registries.BIOME, WhitePumpkins.loc("has_white_pumpkin_patches"));
-    public static final TagKey<Item> WHITE_PUMPKIN_EXTRA_DAMAGE = TagKey.create(Registries.ITEM, WhitePumpkins.loc("white_pumpkin_extra_damage"));
-    public static final Supplier<Identifier> PACK_LOCATION = Suppliers.memoize(() -> WhitePumpkins.loc("animated_white_pumpkin_eyes").withPrefix(Services.HOOKS.isForgeLike() ? "resourcepacks/" : ""));
+    public static final ResourceKey<LootTable> MINESHAFT_INJECTED_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, loc("injected/abandoned_mineshaft"));
+    public static final ResourceKey<LootTable> DUNGEON_MANSION_INJECTED_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, loc("injected/simple_dungeon_woodland_mansion"));
+    public static final ResourceKey<PlacedFeature> PATCH_WHITE_PUMPKIN_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, loc("patch_white_pumpkin"));
+    public static final TagKey<Biome> HAS_WHITE_PUMPKIN_PATCHES_TAG = TagKey.create(Registries.BIOME, loc("has_white_pumpkin_patches"));
+    public static final TagKey<Item> WHITE_PUMPKIN_EXTRA_DAMAGE = TagKey.create(Registries.ITEM, loc("white_pumpkin_extra_damage"));
+    public static final TagKey<Item> CARVED_WHITE_PUMPKINS = TagKey.create(Registries.ITEM, loc("carved_white_pumpkins"));
+    public static final Supplier<Identifier> PACK_LOCATION = Suppliers.memoize(() -> loc("animated_white_pumpkin_eyes").withPrefix(Services.HOOKS.isForgeLike() ? "resourcepacks/" : ""));
     public static final Component PACK_NAME = Component.translatable("resourcePack.white_pumpkins.animated_white_pumpkin_eyes.name");
 
     public static int getWhitePumpkinSteamColor(BlockState state, BlockAndTintGetter tintGetter, BlockPos pos, int tintIndex) {
@@ -47,7 +50,7 @@ public class Util {
     }
 
     public static boolean isWearingWhitePumpkin(LivingEntity entity) {
-        return entity.getItemBySlot(EquipmentSlot.HEAD).is(ModInit.CARVED_WHITE_PUMPKIN.get().asItem());
+        return entity.getItemBySlot(EquipmentSlot.HEAD).is(CARVED_WHITE_PUMPKINS);
     }
 
     public static float applyExtraWhitePumpkinDamage(ItemStack weaponStack, LivingEntity attackerEntity, float damage) {

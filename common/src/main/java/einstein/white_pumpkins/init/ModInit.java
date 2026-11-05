@@ -1,12 +1,10 @@
 package einstein.white_pumpkins.init;
 
-import einstein.white_pumpkins.WhitePumpkins;
 import einstein.white_pumpkins.block.AttachedWhitePumpkinStemBlock;
 import einstein.white_pumpkins.block.CarvedWhitePumpkinBlock;
 import einstein.white_pumpkins.block.WhitePumpkinBlock;
 import einstein.white_pumpkins.block.WhitePumpkinStemBlock;
 import einstein.white_pumpkins.entity.WhitePumpkinSnowGolem;
-import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import me.fzzyhmstrs.fzzy_config.util.platform.Registrar;
 import me.fzzyhmstrs.fzzy_config.util.platform.RegistrySupplier;
 import net.minecraft.core.component.DataComponents;
@@ -31,23 +29,26 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import static einstein.white_pumpkins.WhitePumpkins.MOD_ID;
 import static einstein.white_pumpkins.WhitePumpkins.loc;
+import static me.fzzyhmstrs.fzzy_config.api.ConfigApiJava.platform;
 
 public class ModInit {
 
-    private static final Registrar<Block> BLOCKS = ConfigApiJava.platform().createRegistrar(WhitePumpkins.MOD_ID, BuiltInRegistries.BLOCK);
-    private static final Registrar<Item> ITEMS = ConfigApiJava.platform().createRegistrar(WhitePumpkins.MOD_ID, BuiltInRegistries.ITEM);
-    private static final Registrar<EntityType<?>> ENTITY_TYPES = ConfigApiJava.platform().createRegistrar(WhitePumpkins.MOD_ID, BuiltInRegistries.ENTITY_TYPE);
+    private static final Registrar<Block> BLOCKS = platform().createRegistrar(MOD_ID, BuiltInRegistries.BLOCK);
+    private static final Registrar<Item> ITEMS = platform().createRegistrar(MOD_ID, BuiltInRegistries.ITEM);
+    private static final Registrar<EntityType<?>> ENTITY_TYPES = platform().createRegistrar(MOD_ID, BuiltInRegistries.ENTITY_TYPE);
 
     private static final Identifier PUMPKIN_OVERLAY = Identifier.withDefaultNamespace("misc/pumpkinblur");
+    private static final Supplier<Item.Properties> CARVED_WHITE_PUMPKIN_ITEM_PROPERTIES = () -> new Item.Properties().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD)
+            .setSwappable(false)
+            .setCameraOverlay(PUMPKIN_OVERLAY)
+            .build()
+    );
 
     public static final RegistrySupplier<Block> WHITE_PUMPKIN = registerBlock("white_pumpkin", true, WhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PUMPKIN).mapColor(DyeColor.WHITE));
-    public static final RegistrySupplier<Block> CARVED_WHITE_PUMPKIN = registerBlock("carved_white_pumpkin", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CARVED_PUMPKIN).mapColor(DyeColor.WHITE),
-            new Item.Properties().component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD)
-                    .setSwappable(false)
-                    .setCameraOverlay(PUMPKIN_OVERLAY)
-                    .build()
-            ));
+    public static final RegistrySupplier<Block> CARVED_WHITE_PUMPKIN = registerBlock("carved_white_pumpkin", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CARVED_PUMPKIN).mapColor(DyeColor.WHITE), CARVED_WHITE_PUMPKIN_ITEM_PROPERTIES);
+    public static final RegistrySupplier<Block> DAMAGED_CARVED_WHITE_PUMPKIN = registerBlock("damaged_carved_white_pumpkin", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CARVED_PUMPKIN).mapColor(DyeColor.WHITE), CARVED_WHITE_PUMPKIN_ITEM_PROPERTIES);
     public static final RegistrySupplier<Block> WHITE_JACK_O_LANTERN = registerBlock("white_jack_o_lantern", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).mapColor(DyeColor.WHITE));
     public static final RegistrySupplier<Block> WHITE_SOUL_JACK_O_LANTERN = registerBlock("white_soul_jack_o_lantern", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).mapColor(DyeColor.WHITE));
     public static final RegistrySupplier<Block> WHITE_PUMPKIN_STEM = registerBlock("white_pumpkin_stem", false, WhitePumpkinStemBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PUMPKIN_STEM));
@@ -69,15 +70,15 @@ public class ModInit {
     }
 
     private static <T extends Block> RegistrySupplier<T> registerBlock(String name, boolean hasItem, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties properties) {
-        return registerBlock(name, hasItem, block, properties, new Item.Properties());
+        return registerBlock(name, hasItem, block, properties, Item.Properties::new);
     }
 
-    private static <T extends Block> RegistrySupplier<T> registerBlock(String name, boolean hasItem, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties blockProperties, Item.Properties itemProperties) {
+    private static <T extends Block> RegistrySupplier<T> registerBlock(String name, boolean hasItem, Function<BlockBehaviour.Properties, T> block, BlockBehaviour.Properties blockProperties, Supplier<Item.Properties> itemProperties) {
         blockProperties.setId(ResourceKey.create(Registries.BLOCK, loc(name)));
         RegistrySupplier<T> instance = BLOCKS.register(name, () -> block.apply(blockProperties));
 
         if (hasItem) {
-            registerItem(name, properties -> new BlockItem(instance.get(), properties), itemProperties::useBlockDescriptionPrefix);
+            registerItem(name, properties -> new BlockItem(instance.get(), properties), () -> itemProperties.get().useBlockDescriptionPrefix());
         }
         return instance;
     }
