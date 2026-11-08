@@ -27,7 +27,7 @@ public class ZombieAndAbstractSkeletonMixin {
     }
 
     @ModifyExpressionValue(method = "finalizeSpawn", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;JACK_O_LANTERN:Lnet/minecraft/world/level/block/Block;"))
-    private Block replaceJackOLantern(Block jackOLanternBlock, ServerLevelAccessor accessor, @Local RandomSource random) {
+    private Block replaceJackOLantern(Block jackOLanternBlock, ServerLevelAccessor accessor, @Local(name = "random") RandomSource random) {
         return accessor.getBiome(whitePumpkins$me.blockPosition()).is(Util.HAS_WHITE_PUMPKIN_PATCHES_TAG)
                 ? (random.nextBoolean() ? ModInit.WHITE_JACK_O_LANTERN.get() : ModInit.WHITE_SOUL_JACK_O_LANTERN.get())
                 : jackOLanternBlock;

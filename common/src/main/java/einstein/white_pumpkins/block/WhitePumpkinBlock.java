@@ -6,6 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -44,10 +45,11 @@ public class WhitePumpkinBlock extends Block {
                 new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get(), 4)
         );
 
+        RandomSource random = level.getRandom();
         itemEntity.setDeltaMovement(
-                0.05 * oppositeDirection.getStepX() + level.random.nextDouble() * 0.02,
+                0.05 * oppositeDirection.getStepX() + random.nextDouble() * 0.02,
                 0.05,
-                0.05 * oppositeDirection.getStepZ() + level.random.nextDouble() * 0.02
+                0.05 * oppositeDirection.getStepZ() + random.nextDouble() * 0.02
         );
 
         level.playSound(null, pos, SoundEvents.PUMPKIN_CARVE, SoundSource.BLOCKS, 1, 1);

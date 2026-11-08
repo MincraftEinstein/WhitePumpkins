@@ -6,9 +6,7 @@
   "compatibilityLevel": "JAVA_17",
   "client": [
     "client.LivingEntityRendererMixin",
-    "client.SnowGolemHeadLayerMixin",
-    "client.SnowGolemRendererMixin",
-    "client.SnowGolemRenderStateMixin"
+    "client.SnowGolemRendererMixin"
   ],
   "mixins": [
     "common.CreakingMixin",

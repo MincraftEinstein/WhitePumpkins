@@ -22,7 +22,7 @@ public class PlayerMixin {
     private final Player whitePumpkins$player = (Player) (Object) this;
 
     @WrapOperation(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;getEnchantedDamage(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;)F"))
-    private float modifyDamage(Player player, Entity targetEntity, float damage, DamageSource damageSource, Operation<Float> original, @Local ItemStack weaponStack) {
+    private float modifyDamage(Player player, Entity targetEntity, float damage, DamageSource damageSource, Operation<Float> original, @Local(name = "attackingItemStack") ItemStack weaponStack) {
         return Util.applyExtraWhitePumpkinDamage(weaponStack, player, original.call(player, targetEntity, damage, damageSource));
     }
 

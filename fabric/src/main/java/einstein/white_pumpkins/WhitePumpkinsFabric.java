@@ -7,21 +7,17 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
-import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+import net.fabricmc.fabric.api.registry.CompostableRegistry;
 import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.SnowGolemRenderer;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
-import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -31,8 +27,11 @@ import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 
+import java.util.List;
+
 import static einstein.white_pumpkins.WhitePumpkins.loc;
 import static einstein.white_pumpkins.util.Util.HAS_WHITE_PUMPKIN_PATCHES_TAG;
+import static einstein.white_pumpkins.util.Util.createWhitePumpkinSteamTintSource;
 
 public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer {
 
@@ -40,14 +39,14 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
     public void onInitialize() {
         WhitePumpkins.init();
 
-        CompostingChanceRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN.get(), 0.65F);
-        CompostingChanceRegistry.INSTANCE.add(ModInit.CARVED_WHITE_PUMPKIN.get(), 0.65F);
-        CompostingChanceRegistry.INSTANCE.add(ModInit.DAMAGED_CARVED_WHITE_PUMPKIN.get(), 0.65F);
-        CompostingChanceRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN_SEEDS.get(), 0.3F);
-        CompostingChanceRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN_PIE.get(), 1F);
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.NATURAL_BLOCKS).register(entries -> {
-            entries.addAfter(Items.PUMPKIN_SEEDS, new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get()));
-            entries.addAfter(Blocks.JACK_O_LANTERN,
+        CompostableRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN.get(), 0.65F);
+        CompostableRegistry.INSTANCE.add(ModInit.CARVED_WHITE_PUMPKIN.get(), 0.65F);
+        CompostableRegistry.INSTANCE.add(ModInit.DAMAGED_CARVED_WHITE_PUMPKIN.get(), 0.65F);
+        CompostableRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN_SEEDS.get(), 0.3F);
+        CompostableRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN_PIE.get(), 1F);
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.NATURAL_BLOCKS).register(output -> {
+            output.insertAfter(Items.PUMPKIN_SEEDS, new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get()));
+            output.insertAfter(Blocks.JACK_O_LANTERN,
                     new ItemStack(ModInit.WHITE_PUMPKIN.get()),
                     new ItemStack(ModInit.CARVED_WHITE_PUMPKIN.get()),
                     new ItemStack(ModInit.DAMAGED_CARVED_WHITE_PUMPKIN.get()),
@@ -55,16 +54,12 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
                     new ItemStack(ModInit.WHITE_SOUL_JACK_O_LANTERN.get())
             );
         });
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(entries -> {
-            entries.addAfter(Items.PUMPKIN_PIE, new ItemStack(ModInit.WHITE_PUMPKIN_PIE.get()));
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(output -> {
+            output.insertAfter(Items.PUMPKIN_PIE, new ItemStack(ModInit.WHITE_PUMPKIN_PIE.get()));
         });
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.SPAWN_EGGS).register(entries -> {
-            entries.addAfter(Items.SNOW_GOLEM_SPAWN_EGG, new ItemStack(ModInit.WHITE_PUMPKIN_SNOW_GOLEM_SPAWN_EGG.get()));
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(output -> {
+            output.insertAfter(Items.SNOW_GOLEM_SPAWN_EGG, new ItemStack(ModInit.WHITE_PUMPKIN_SNOW_GOLEM_SPAWN_EGG.get()));
         });
-        TradeOfferHelper.registerWanderingTraderOffers(builder ->
-                builder.addOffersToPool(TradeOfferHelper.WanderingTraderOffersBuilder.SELL_COMMON_ITEMS_POOL,
-                        new VillagerTrades.ItemsForEmeralds(ModInit.WHITE_PUMPKIN_SEEDS.get(), 2, 1, 1))
-        );
         FabricDefaultAttributeRegistry.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), WhitePumpkinSnowGolem.createAttributes());
         LootTableEvents.MODIFY.register((key, builder, source, registries) -> {
             if (source.isBuiltin()) {
@@ -93,9 +88,8 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
 
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.putBlocks(ChunkSectionLayer.CUTOUT, ModInit.WHITE_PUMPKIN_STEM.get(), ModInit.ATTACHED_WHITE_PUMPKIN_STEM.get());
         EntityRenderers.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), SnowGolemRenderer::new);
-        ColorProviderRegistry.BLOCK.register(Util::getWhitePumpkinSteamColor, ModInit.WHITE_PUMPKIN_STEM.get());
+        BlockColorRegistry.register(List.of(createWhitePumpkinSteamTintSource()), ModInit.WHITE_PUMPKIN_STEM.get());
         ResourceLoader.registerBuiltinPack(Util.PACK_LOCATION.get(),
                 FabricLoader.getInstance().getModContainer(WhitePumpkins.MOD_ID).orElseThrow(),
                 Util.PACK_NAME, PackActivationType.NORMAL

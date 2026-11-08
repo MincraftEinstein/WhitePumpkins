@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public class CreakingMixin {
 
     @ModifyExpressionValue(method = "checkCanMove", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/monster/creaking/Creaking;canAttack(Lnet/minecraft/world/entity/LivingEntity;)Z"))
-    private boolean ignorePlayersWearingWhitePumpkins(boolean original, @Local Player player) {
+    private boolean ignorePlayersWearingWhitePumpkins(boolean original, @Local(name = "player") Player player) {
         return original && !Util.isWearingWhitePumpkin(player);
     }
 }

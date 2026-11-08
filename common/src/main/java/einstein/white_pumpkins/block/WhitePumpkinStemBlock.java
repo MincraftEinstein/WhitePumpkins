@@ -101,12 +101,12 @@ public class WhitePumpkinStemBlock extends VegetationBlock implements Bonemealab
 
     @Override
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        int age = Math.min(MAX_AGE, state.getValue(AGE) + Mth.nextInt(level.random, 2, 5));
+        int age = Math.min(MAX_AGE, state.getValue(AGE) + Mth.nextInt(random, 2, 5));
         BlockState newState = state.setValue(AGE, age);
         level.setBlock(pos, newState, Block.UPDATE_CLIENTS);
 
         if (age == MAX_AGE) {
-            newState.randomTick(level, pos, level.random);
+            newState.randomTick(level, pos, random);
         }
     }
 

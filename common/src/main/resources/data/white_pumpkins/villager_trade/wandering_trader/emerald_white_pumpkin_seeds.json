@@ -1,0 +1,10 @@
+{
+  "gives": {
+    "id": "white_pumpkins:white_pumpkin_seeds"
+  },
+  "wants": {
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 12,
+  "reputation_discount": 0.05
+}

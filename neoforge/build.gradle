@@ -14,11 +14,6 @@ neoForge {
 
     accessTransformers.from(project(':common').files('src/main/resources/META-INF/accesstransformer.cfg'))
 
-    parchment {
-        minecraftVersion = parchment_minecraft
-        mappingsVersion = parchment_version
-    }
-
     runs {
         configureEach {
             systemProperty('neoforge.enabledGameTestNamespaces', mod_id)

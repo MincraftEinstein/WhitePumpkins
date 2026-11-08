@@ -3,9 +3,8 @@ package einstein.white_pumpkins.util;
 import com.google.common.base.Suppliers;
 import einstein.white_pumpkins.WhitePumpkins;
 import einstein.white_pumpkins.block.WhitePumpkinStemBlock;
-import einstein.white_pumpkins.init.ModInit;
 import einstein.white_pumpkins.platform.Services;
-import net.minecraft.core.BlockPos;
+import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -17,12 +16,13 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.storage.loot.LootTable;
 
+import java.util.Set;
 import java.util.function.Supplier;
 
 import static einstein.white_pumpkins.WhitePumpkins.loc;
@@ -38,11 +38,22 @@ public class Util {
     public static final Supplier<Identifier> PACK_LOCATION = Suppliers.memoize(() -> loc("animated_white_pumpkin_eyes").withPrefix(Services.HOOKS.isForgeLike() ? "resourcepacks/" : ""));
     public static final Component PACK_NAME = Component.translatable("resourcePack.white_pumpkins.animated_white_pumpkin_eyes.name");
 
-    public static int getWhitePumpkinSteamColor(BlockState state, BlockAndTintGetter tintGetter, BlockPos pos, int tintIndex) {
-        int age = state.getValue(WhitePumpkinStemBlock.AGE);
-        int i = age + 1;
-        int i1 = (int) (((255F - 32F) / WhitePumpkinStemBlock.MAX_AGE) * age);
-        return ARGB.color(32 + i1, 247 + i, 4 * i + i1);
+    public static BlockTintSource createWhitePumpkinSteamTintSource() {
+        return new BlockTintSource() {
+
+            @Override
+            public int color(BlockState state) {
+                int age = state.getValue(WhitePumpkinStemBlock.AGE);
+                int i = age + 1;
+                int i1 = (int) (((255F - 32F) / WhitePumpkinStemBlock.MAX_AGE) * age);
+                return ARGB.color(32 + i1, 247 + i, 4 * i + i1);
+            }
+
+            @Override
+            public Set<Property<?>> relevantProperties() {
+                return Set.of(WhitePumpkinStemBlock.AGE);
+            }
+        };
     }
 
     public static boolean shouldObfuscateNames(Entity entity) {
