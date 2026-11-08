@@ -1,15 +1,15 @@
 package einstein.white_pumpkins.block;
 
 import com.mojang.serialization.MapCodec;
-import einstein.white_pumpkins.init.ModInit;
 import einstein.white_pumpkins.entity.WhitePumpkinSnowGolem;
-import net.minecraft.advancements.CriteriaTriggers;
+import einstein.white_pumpkins.init.ModInit;
+import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.animal.golem.IronGolem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
@@ -33,8 +33,7 @@ public class CarvedWhitePumpkinBlock extends HorizontalDirectionalBlock {
 
     public static final MapCodec<CarvedWhitePumpkinBlock> CODEC = simpleCodec(CarvedWhitePumpkinBlock::new);
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    private static final Predicate<BlockState> PUMPKINS_PREDICATE = (state) ->
-            state != null && (state.is(ModInit.CARVED_WHITE_PUMPKIN.get())
+    private static final Predicate<BlockState> PUMPKINS_PREDICATE = (state) -> (state.is(ModInit.CARVED_WHITE_PUMPKIN.get())
                     || state.is(ModInit.WHITE_JACK_O_LANTERN.get())
                     || state.is(ModInit.WHITE_SOUL_JACK_O_LANTERN.get()));
 
@@ -82,7 +81,7 @@ public class CarvedWhitePumpkinBlock extends HorizontalDirectionalBlock {
 
         BlockPattern.BlockPatternMatch ironGolemPatternMatch = getOrCreateIronGolemFull().find(level, pos);
         if (ironGolemPatternMatch != null) {
-            IronGolem ironGolem = EntityType.IRON_GOLEM.create(level, EntitySpawnReason.TRIGGERED);
+            IronGolem ironGolem = EntityTypes.IRON_GOLEM.create(level, EntitySpawnReason.TRIGGERED);
             if (ironGolem != null) {
                 ironGolem.setPlayerCreated(true);
                 spawnGolemInWorld(level, ironGolemPatternMatch, ironGolem, ironGolemPatternMatch.getBlock(1, 2, 0).getPos());

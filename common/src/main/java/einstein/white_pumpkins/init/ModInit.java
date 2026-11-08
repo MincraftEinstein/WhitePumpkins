@@ -12,6 +12,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -57,7 +58,7 @@ public class ModInit {
     public static final RegistrySupplier<Item> WHITE_PUMPKIN_SEEDS = registerItem("white_pumpkin_seeds", properties -> new BlockItem(WHITE_PUMPKIN_STEM.get(), properties), () -> new Item.Properties().useItemDescriptionPrefix());
     public static final RegistrySupplier<Item> WHITE_PUMPKIN_PIE = registerItem("white_pumpkin_pie", Item::new, () -> new Item.Properties().food(Foods.PUMPKIN_PIE));
     public static final RegistrySupplier<EntityType<WhitePumpkinSnowGolem>> WHITE_PUMPKIN_SNOW_GOLEM = registerEntity("white_pumpkin_snow_golem", () -> EntityType.Builder.of(WhitePumpkinSnowGolem::new, MobCategory.MISC)
-            .immuneTo(Blocks.POWDER_SNOW)
+            .immuneTo(BlockTags.SNOW_GOLEM_IMMUNE_TO)
             .sized(0.7F, 1.9F)
             .eyeHeight(1.7F)
             .clientTrackingRange(8)
