@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "white_pumpkins:white_pumpkin_seeds"
+        "recipes": "white_pumpkins:white_pumpkin_seeds"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

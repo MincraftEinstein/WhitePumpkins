@@ -1,6 +1,5 @@
 package einstein.white_pumpkins.block;
 
-import com.mojang.serialization.MapCodec;
 import einstein.white_pumpkins.init.ModInit;
 import einstein.white_pumpkins.platform.Services;
 import net.minecraft.core.BlockPos;
@@ -25,7 +24,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class WhitePumpkinStemBlock extends VegetationBlock implements BonemealableBlock {
 
-    public static final MapCodec<WhitePumpkinStemBlock> CODEC = simpleCodec(WhitePumpkinStemBlock::new);
     public static final int MAX_AGE = 7;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
     protected static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] {
@@ -42,11 +40,6 @@ public class WhitePumpkinStemBlock extends VegetationBlock implements Bonemealab
     public WhitePumpkinStemBlock(BlockBehaviour.Properties properties) {
         super(properties);
         registerDefaultState(stateDefinition.any().setValue(AGE, 0));
-    }
-
-    @Override
-    public MapCodec<? extends VegetationBlock> codec() {
-        return CODEC;
     }
 
     @Override
@@ -90,17 +83,17 @@ public class WhitePumpkinStemBlock extends VegetationBlock implements Bonemealab
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader reader, BlockPos pos, BlockState state) {
+    public boolean isValidBonemealTarget(LevelReader reader, BlockPos pos, BlockState state, BonemealSource source) {
         return state.getValue(AGE) != MAX_AGE;
     }
 
     @Override
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         int age = Math.min(MAX_AGE, state.getValue(AGE) + Mth.nextInt(random, 2, 5));
         BlockState newState = state.setValue(AGE, age);
         level.setBlock(pos, newState, Block.UPDATE_CLIENTS);

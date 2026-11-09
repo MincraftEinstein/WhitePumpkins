@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "white_pumpkins:white_pumpkin_pie"
+        "recipes": "white_pumpkins:white_pumpkin_pie"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

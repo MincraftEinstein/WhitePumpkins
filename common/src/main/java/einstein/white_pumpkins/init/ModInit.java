@@ -27,6 +27,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -46,17 +47,17 @@ public class ModInit {
             .setSwappable(false)
             .setCameraOverlay(PUMPKIN_OVERLAY)
             .build()
-    );
+    ).compostable(ContextIntProviders.COMPOSTABLE_MEDIUM);
 
-    public static final RegistrySupplier<Block> WHITE_PUMPKIN = registerBlock("white_pumpkin", true, WhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PUMPKIN).mapColor(DyeColor.WHITE));
+    public static final RegistrySupplier<Block> WHITE_PUMPKIN = registerBlock("white_pumpkin", true, WhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PUMPKIN).mapColor(DyeColor.WHITE), () -> new Item.Properties().compostable(ContextIntProviders.COMPOSTABLE_MEDIUM));
     public static final RegistrySupplier<Block> CARVED_WHITE_PUMPKIN = registerBlock("carved_white_pumpkin", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CARVED_PUMPKIN).mapColor(DyeColor.WHITE), CARVED_WHITE_PUMPKIN_ITEM_PROPERTIES);
     public static final RegistrySupplier<Block> DAMAGED_CARVED_WHITE_PUMPKIN = registerBlock("damaged_carved_white_pumpkin", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.CARVED_PUMPKIN).mapColor(DyeColor.WHITE), CARVED_WHITE_PUMPKIN_ITEM_PROPERTIES);
     public static final RegistrySupplier<Block> WHITE_JACK_O_LANTERN = registerBlock("white_jack_o_lantern", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).mapColor(DyeColor.WHITE));
     public static final RegistrySupplier<Block> WHITE_SOUL_JACK_O_LANTERN = registerBlock("white_soul_jack_o_lantern", true, CarvedWhitePumpkinBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.JACK_O_LANTERN).mapColor(DyeColor.WHITE));
     public static final RegistrySupplier<Block> WHITE_PUMPKIN_STEM = registerBlock("white_pumpkin_stem", false, WhitePumpkinStemBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PUMPKIN_STEM).mapColor(state -> state.getValue(WhitePumpkinStemBlock.AGE) > 5 ? DyeColor.WHITE.getMapColor() : MapColor.PLANT));
     public static final RegistrySupplier<Block> ATTACHED_WHITE_PUMPKIN_STEM = registerBlock("attached_white_pumpkin_stem", false, AttachedWhitePumpkinStemBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.ATTACHED_PUMPKIN_STEM).mapColor(DyeColor.WHITE));
-    public static final RegistrySupplier<Item> WHITE_PUMPKIN_SEEDS = registerItem("white_pumpkin_seeds", properties -> new BlockItem(WHITE_PUMPKIN_STEM.get(), properties), () -> new Item.Properties().useItemDescriptionPrefix());
-    public static final RegistrySupplier<Item> WHITE_PUMPKIN_PIE = registerItem("white_pumpkin_pie", Item::new, () -> new Item.Properties().food(Foods.PUMPKIN_PIE));
+    public static final RegistrySupplier<Item> WHITE_PUMPKIN_SEEDS = registerItem("white_pumpkin_seeds", properties -> new BlockItem(WHITE_PUMPKIN_STEM.get(), properties), () -> new Item.Properties().useItemDescriptionPrefix().compostable(ContextIntProviders.COMPOSTABLE_LOW));
+    public static final RegistrySupplier<Item> WHITE_PUMPKIN_PIE = registerItem("white_pumpkin_pie", Item::new, () -> new Item.Properties().food(Foods.PUMPKIN_PIE).compostable(ContextIntProviders.COMPOSTABLE_ALWAYS_ADD_ONE));
     public static final RegistrySupplier<EntityType<WhitePumpkinSnowGolem>> WHITE_PUMPKIN_SNOW_GOLEM = registerEntity("white_pumpkin_snow_golem", () -> EntityType.Builder.of(WhitePumpkinSnowGolem::new, MobCategory.MISC)
             .immuneTo(BlockTags.SNOW_GOLEM_IMMUNE_TO)
             .sized(0.7F, 1.9F)

@@ -2,7 +2,6 @@ package einstein.white_pumpkins.block;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
 import einstein.white_pumpkins.init.ModInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,7 +22,6 @@ import java.util.Map;
 
 public class AttachedWhitePumpkinStemBlock extends VegetationBlock {
 
-    public static final MapCodec<AttachedWhitePumpkinStemBlock> CODEC = simpleCodec(AttachedWhitePumpkinStemBlock::new);
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     private static final Map<Direction, VoxelShape> AABBS = Maps.newEnumMap(ImmutableMap.of(
             Direction.SOUTH, Block.box(6, 0, 6, 10, 10, 16),
@@ -35,11 +33,6 @@ public class AttachedWhitePumpkinStemBlock extends VegetationBlock {
     public AttachedWhitePumpkinStemBlock(BlockBehaviour.Properties properties) {
         super(properties);
         registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
-    }
-
-    @Override
-    public MapCodec<? extends VegetationBlock> codec() {
-        return CODEC;
     }
 
     @Override

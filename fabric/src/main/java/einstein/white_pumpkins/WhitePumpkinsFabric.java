@@ -11,12 +11,13 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.fabricmc.fabric.api.registry.CompostableRegistry;
 import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.SnowGolemRenderer;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
@@ -25,6 +26,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 
 import java.util.List;
@@ -39,11 +41,6 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
     public void onInitialize() {
         WhitePumpkins.init();
 
-        CompostableRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN.get(), 0.65F);
-        CompostableRegistry.INSTANCE.add(ModInit.CARVED_WHITE_PUMPKIN.get(), 0.65F);
-        CompostableRegistry.INSTANCE.add(ModInit.DAMAGED_CARVED_WHITE_PUMPKIN.get(), 0.65F);
-        CompostableRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN_SEEDS.get(), 0.3F);
-        CompostableRegistry.INSTANCE.add(ModInit.WHITE_PUMPKIN_PIE.get(), 1F);
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.NATURAL_BLOCKS).register(output -> {
             output.insertAfter(Items.PUMPKIN_SEEDS, new ItemStack(ModInit.WHITE_PUMPKIN_SEEDS.get()));
             output.insertAfter(Blocks.JACK_O_LANTERN,
@@ -63,19 +60,20 @@ public class WhitePumpkinsFabric implements ModInitializer, ClientModInitializer
         FabricDefaultAttributeRegistry.register(ModInit.WHITE_PUMPKIN_SNOW_GOLEM.get(), WhitePumpkinSnowGolem.createAttributes());
         LootTableEvents.MODIFY.register((key, builder, source, registries) -> {
             if (source.isBuiltin()) {
+                HolderLookup.RegistryLookup<LootTable> registry = registries.lookupOrThrow(Registries.LOOT_TABLE);
                 if (key.equals(BuiltInLootTables.SIMPLE_DUNGEON)) {
                     builder.withPool(new LootPool.Builder()
-                            .add(NestedLootTable.lootTableReference(Util.DUNGEON_MANSION_INJECTED_LOOT_TABLE))
+                            .add(NestedLootTable.lootTableReference(registry.getOrThrow(Util.DUNGEON_MANSION_INJECTED_LOOT_TABLE)))
                     );
                 }
                 else if (key.equals(BuiltInLootTables.ABANDONED_MINESHAFT)) {
                     builder.withPool(new LootPool.Builder()
-                            .add(NestedLootTable.lootTableReference(Util.MINESHAFT_INJECTED_LOOT_TABLE))
+                            .add(NestedLootTable.lootTableReference(registry.getOrThrow(Util.MINESHAFT_INJECTED_LOOT_TABLE)))
                     );
                 }
                 else if (key.equals(BuiltInLootTables.WOODLAND_MANSION)) {
                     builder.withPool(new LootPool.Builder()
-                            .add(NestedLootTable.lootTableReference(Util.DUNGEON_MANSION_INJECTED_LOOT_TABLE))
+                            .add(NestedLootTable.lootTableReference(registry.getOrThrow(Util.DUNGEON_MANSION_INJECTED_LOOT_TABLE)))
                     );
                 }
             }

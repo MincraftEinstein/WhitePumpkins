@@ -1,6 +1,5 @@
 package einstein.white_pumpkins.block;
 
-import com.mojang.serialization.MapCodec;
 import einstein.white_pumpkins.entity.WhitePumpkinSnowGolem;
 import einstein.white_pumpkins.init.ModInit;
 import net.minecraft.advancements.triggers.CriteriaTriggers;
@@ -31,7 +30,6 @@ import java.util.function.Predicate;
 
 public class CarvedWhitePumpkinBlock extends HorizontalDirectionalBlock {
 
-    public static final MapCodec<CarvedWhitePumpkinBlock> CODEC = simpleCodec(CarvedWhitePumpkinBlock::new);
     public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     private static final Predicate<BlockState> PUMPKINS_PREDICATE = (state) -> (state.is(ModInit.CARVED_WHITE_PUMPKIN.get())
                     || state.is(ModInit.WHITE_JACK_O_LANTERN.get())
@@ -45,11 +43,6 @@ public class CarvedWhitePumpkinBlock extends HorizontalDirectionalBlock {
     public CarvedWhitePumpkinBlock(BlockBehaviour.Properties properties) {
         super(properties);
         registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
-    }
-
-    @Override
-    protected MapCodec<? extends CarvedWhitePumpkinBlock> codec() {
-        return CODEC;
     }
 
     @Override
